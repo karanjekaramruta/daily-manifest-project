@@ -16,8 +16,7 @@ app.post("/login", (req,res, next)=> {
                     console.log("Error", err);
                 } else if(match) {
                     req.session.user = user;
-                    if(req.query.redirectUrl) res.redirect(req.query.redirectUrl);
-                    else res.redirect("/");
+                    res.redirect("/");
                     
                 } else {
                     res.redirect("/auth/login?error=incorrect+credentials");
