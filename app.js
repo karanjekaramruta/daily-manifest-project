@@ -48,6 +48,8 @@ const index = require('./routes/index');
 const createGoal = require('./routes/goals/create');
 app.use('/', index);
 app.use('/', createGoal);
+app.use("/", require("./routes/auth/signup"));
+app.use("/", require("./routes/auth/login"));
 
 app.listen(process.env.PORT, ()=>{
   console.log("app listening")
