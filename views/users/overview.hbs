@@ -1,27 +1,44 @@
 <div class="container-fluid">
 
-<!-- Welcome, date and user profile picture -->
-  <div class="d-flex flex-row">
-    <div class="d-flex flex-column">
-    <div class="p-2">
+  <!-- Welcome, date and user profile picture -->
+  <div class="row">
+    <div class="col-sm">
       <h4>Welcome {{user.firstName}}!</h4>
-      <p>Current date</p>
+      <span class="weekday-label"></span>, <span class="day-label"></span> <span class="month-label"></span>
     </div>
-    <div class="p-2 d-flex justify-content-end">
-      {{profilePicture}}
-      <a href="/user-Profile">Edit your profile</a>
-    </div>
-    </div>
-  </div>
-
-<!-- Current goal and upcoming tasks -->
-  <div class="d-flex flex-row">
-    <div class="p-2"></div>
-      <h5>Current goal: </h5>
-      <p>Goal's name</p> <!-- retrieve current goal from db based on start and end date -->
+    <div class="col-sm">
+      <img src="{{user.profilePicture}}" alt="Your profile picture">
+      <a href="/users/user-Profile">Edit your profile</a>
     </div>
   </div>
 
-  <div class="d-flex flex-row"></div>
+  <div class="row">
+    <!-- Monthly overview -->
+    <div class="col-sm">
+      <h5>This month's goals:</h5>
+      {{#if goal.startDate >  }} <!-- If current date > start and < end dates --> 
+        {{#each goal}}
+          {{goal.name}}
+          {{goal.tasks}}
+        {{/each}}
+      {{/if}}
+    </div>
+    <!-- Quartely overview -->
+    <div class="col-sm">
+      <h5>This quarter's goals:</h5>
+    </div>
+  </div>
 
 </div>
+
+<!-- Current date script -->
+<script>
+let date = new Date();
+let day = date.getDate();
+let year = date.getFullYear();
+let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+let dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+let monthLabel = document.getElementsByClassName('month-label')[0].innerHTML = monthNames[date.getMonth()];
+let dayLabel = document.getElementsByClassName("day-label")[0].innerHTML = day;
+let weekdayLabel = document.getElementsByClassName("weekday-label")[0].innerHTML = dayNames[date.getDay(0)];
+</script>
