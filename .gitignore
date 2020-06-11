@@ -2,22 +2,5 @@
 node_modules
 # Debug log from npm
 npm-debug.log
-<<<<<<< HEAD
-
-<<<<<<< HEAD
-# we are publishing .env file for learning purposes
-# but keep in mind - Environment Variables should NEVER be published ☝🏻
-# .env
-
-package-lock.json
-
 # Environment Variables should NEVER be published
 .env
-=======
-# Environment Variables should NEVER be published
-.env
-=======
-# Environment Variables should NEVER be published
-.env
->>>>>>> 206a2a841cb4c37f1f7b2cee4495f936fab4e10d
->>>>>>> aa1621ce85c6106ed467e67851fd267a9b7f5249
