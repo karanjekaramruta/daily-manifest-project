@@ -30,7 +30,7 @@ app.use(require('node-sass-middleware')({
   dest: path.join(__dirname, 'public'),
   sourceMap: true
 }));
-      
+     
 
 app.set('views', path.join(__dirname, 'views'));
 app.set("view engine", "hbs");
@@ -50,6 +50,9 @@ app.use('/', createGoal);
 app.use("/", require("./routes/auth/signup"));
 app.use("/", require("./routes/auth/login"));
 app.use("/", require("./routes/users/overview"));
+app.use("/", require("./routes/users/user-Profile"));
+
+
 
 app.listen(process.env.PORT, ()=>{
   console.log("app listening")

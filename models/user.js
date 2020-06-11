@@ -5,8 +5,11 @@ const userSchema = new Schema(
 
 {
     firstName:{type: String},
-    lstname:{type:String}
-    ,
+    lastname:{type:String},
+    dateOfBirth:{type:Date},
+    address:{type:String} ,
+    hobbies:{type:String},
+    occupation :{type:String},
     profilePicture: {
       type: String,
       default: "images/default.png"
@@ -28,10 +31,7 @@ const userSchema = new Schema(
   {
     timestamps: true
   }
-)
-
-;
+);
 
 const User = mongoose.model("User", userSchema);
-
 module.exports = User;
