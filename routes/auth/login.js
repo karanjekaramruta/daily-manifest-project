@@ -2,15 +2,6 @@ const express = require("express");
 const app = express();
 const User = require('../../models/user');
 const bcrypt = require('bcrypt');
-const session = require("express-session");
-
-app.use(
-    session({
-      secret: "keyboard cat",
-      resave: false,
-      saveUninitialized: true,
-    })
-  );
 
 app.get("/login", (req,res)=> { res.render("auth/login") })
 
