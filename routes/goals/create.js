@@ -11,9 +11,9 @@ app.get("/goals/create", (req, res) => {
 app.post("/goals/create", (req,res)=>{
   debugger
   
-  const {title, description, startDate,endDate,type,category} = req.body;
+  const {title, description, startDate,endDate,type,level,category,priority} = req.body;
 
-    let goal = new Goal({title, description, startDate,endDate,type,category});
+    let goal = new Goal({title, description, startDate,endDate,type,level,category,priority});
 
     Goal
       .create(goal)
