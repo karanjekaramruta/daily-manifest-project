@@ -66,9 +66,7 @@ app.use((req,res,next) => {
 })
 
 // Registering routes
-const index = require('./routes/index');
-const createGoal = require('./routes/goals/create');
-app.use('/', index);
+app.use('/', require('./routes/index'));
 app.use("/", require("./routes/auth/signup"));
 app.use("/", require("./routes/auth/login"));
 
@@ -80,7 +78,8 @@ function protectPath(req,res,next){
     res.redirect("/auth/login");
   }
 }
-app.use('/', createGoal);
+app.use('/', protectPath, require('./routes/goals/create'));
+app.use('/', protectPath, require('./routes/goals/myGoals'));
 app.use("/", protectPath, require("./routes/users/overview"));
 app.use("/", protectPath, require('./routes/auth/logout'));
 app.use("/", protectPath, require("./routes/users/user-Profile"));

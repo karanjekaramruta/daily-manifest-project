@@ -1,1 +1,25 @@
 {{> navbar}}
+<div class="container" id="goals">
+  <div class="row">
+    <h1>My Goals</h1>
+  </div>
+  <div class="row">
+    <div class="col-10 goal-card">
+      {{#each goals}}
+          <h3>{{this.title}}</h3>
+          <p>Due : {{this.endDate}}</p>
+          <p>level: {{this.level}}</p>
+          <p>priority: {{this.category}}</p>
+          <p>type: {{this.type}}</p>
+      {{/each}}
+      <h3>{{this.name}}</h2>
+      <p></p>
+    </div>
+  </div>
+</div>
+
+<style>
+  .goal-card{
+    background-color: lightblue;
+  }
+</style>
