@@ -1,10 +1,24 @@
-<h2>Log in</h2>
-<form action="/login" method="POST">
-    <p>Email</p>
-    <input type="email" name="email" placeholder="Your email address" />
-    <p>Password</p>
-    <input type="password" name="password" placeholder="Your password" />
-    <button type="submit">Log in</button>
-    <br>
-    <p>No account yet? <a href="/login">Create one now!</a></p>
+<div class="container">
+    <h2>Log in</h2>
+    <form action="/login" method="POST">
+    <div class="form-group">
+        <label for="email">Email ID</label>
+        <input type="email" name="email" placeholder="Your email address" />
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" name="password" placeholder="Your password" />
+    </div>
+    <button class="btn btn-primary btn-block mt-2" type="submit">Log In</button>
+
+    {{#if errorMessage}}
+        <div>
+            <p>{{errorMessage}}</p>
+        </div>
+    {{/if}}
+    <div class="signUpLink">
+        <p>No account yet? <a href="/login">Create one now!</a></p>
+    </div>
 </form>
+</div>
+

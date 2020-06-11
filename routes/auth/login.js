@@ -2,30 +2,56 @@ const express = require("express");
 const app = express();
 const User = require('../../models/user');
 const bcrypt = require('bcrypt');
+const session = require("express-session");
+
+app.use(
+    session({
+      secret: "keyboard cat",
+      resave: false,
+      saveUninitialized: true,
+    })
+  );
 
 app.get("/login", (req,res)=> { res.render("auth/login") })
 
 app.post("/login", (req,res, next)=> {
-    User.findOne({
-        email: req.body.email
-    })
-    .then((user)=> {
-        if(!user) {
-            res.redirect("/auth/login?error=incorrect+credentials");
-        } else {
+
+    if (req.body.email === "" || req.body.password === "") {
+        res.render("user/login", {
+          errorMessage: "Please enter both, username and email to log in.",
+        });
+        return;
+    }
+
+
+     User
+        .findOne({email: req.body.email})
+        .then((user)=> {
+            
+            if(!user) {
+                res.render("auth/login", {
+                    errorMessage: "The user does not exist"
+                });
+
+                return;
+            } 
+
             bcrypt.compare(req.body.password, user.password, function(err, match) {
                 if(err){
-                    console.log("Error", err);
-                    debugger
+                    console.log("error occurred in password comparison", err);
+
                 } else if(match) {
-                    req.session.user = user;
-                    res.redirect("./user/overview");
+                    req.session.currentUser = user;
+                    res.redirect("/users/overview");
                 } else {
-                    res.redirect("/login?error=incorrect+credentials");
+                    res.render("auth/login", {
+                        errorMessage : "Incorrect credentials"
+                    });
                 }
             });
-    }})
-    .catch((err)=> { console.log("Err", err) })
+            
+        })
+        .catch((err)=> { console.log("Err", err) })
 })
 
 module.exports = app;
