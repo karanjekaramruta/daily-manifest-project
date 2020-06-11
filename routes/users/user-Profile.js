@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const User = require("../../models/user");
 var bodyParser = require("body-parser");
+
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get("/users/user-profile/", (req, res) => {
@@ -31,5 +32,8 @@ app.post("/users/user-profile", (req,res)=>{
       console.log('error while saving a goal', err);
     })
 })
+
+
+
 
 module.exports = app;
