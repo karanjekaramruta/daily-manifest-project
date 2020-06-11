@@ -46,12 +46,21 @@ app.locals.title = 'Goal Tracker';
 const index = require('./routes/index');
 const createGoal = require('./routes/goals/create');
 app.use('/', index);
-app.use('/', createGoal);
 app.use("/", require("./routes/auth/signup"));
 app.use("/", require("./routes/auth/login"));
-app.use("/", require("./routes/users/overview"));
-app.use("/", require('./routes/auth/logout'));
-app.use("/", require("./routes/users/user-Profile"));
+
+function protectPath(req,res,next){
+  if(req.session.currentUser) {
+    next();
+  }
+  else{
+    res.redirect("/auth/login");
+  }
+}
+app.use('/', createGoal);
+app.use("/", protectPath, require("./routes/users/overview"));
+app.use("/", protectPath, require('./routes/auth/logout'));
+app.use("/", protectPath, require("./routes/users/user-Profile"));
 
 
 
