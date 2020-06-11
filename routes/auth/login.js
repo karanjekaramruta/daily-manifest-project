@@ -13,7 +13,7 @@ app.post("/login", (req,res, next)=> {
         if(!user) {
             res.redirect("/auth/login?error=incorrect+credentials");
         } else {
-            bcrypt.compare(req.body.passwordHash, user.passwordHash, function(err, match) {
+            bcrypt.compare(req.body.password, user.password, function(err, match) {
                 if(err){
                     console.log("Error", err);
                 } else if(match) {
