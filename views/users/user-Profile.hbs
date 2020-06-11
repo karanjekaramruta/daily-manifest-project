@@ -17,27 +17,27 @@
 </section>
 
 
-<form action="user/user-profile/{{upload._id}}" method="POST">
+<form action="/users/user-profile" method="POST">
     <p>First Name:</p>
-    <input type="text" name="firstName" placeholder="{{upload.firstName}}" />
+    <input type="text" name="firstName" value="{{upload.firstName}}" />
 
     <p>Last Name:</p>
-    <input type="text" name="lastName" placeholder="{{upload.lastName}}" />
+    <input type="text" name="lastName" value="{{upload.lastName}}" />
 
     <p>Email ID:</p>
-    <input type="email" name="email" placeholder="{{upload.email}}" />
+    <input type="email" name="email" value="{{upload.email}}" />
 
     <p>Date of Birth:</p>
-    <input type="date" name="dateOfbirth" placeholder="{{upload.dateOfBirth}}" />
+    <input type="date" name="dateOfbirth" value="{{upload.dateOfBirth}}" />
 
     <p>Address :</p>
-    <input type="text" name="address" placeholder="{{upload.address}}" />
+    <input type="text" name="address" value="{{upload.address}}" />
 
     <p>Occupation :</p>
-   <input type="text" name="occupation" placeholder="{{upload.occupation}}" />
+   <input type="text" name="occupation" value="{{upload.occupation}}" />
 
     <p>Hobbies :</p>
-    <input type="text" name="hobbies" placeholder="{{upload.hobbies}}" />
+    <input type="text" name="hobbies" value="{{upload.hobbies}}" />
     <button type="submit"> Update</button>
     <br>  
 </form>

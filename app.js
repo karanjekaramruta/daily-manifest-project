@@ -50,7 +50,7 @@ app.use('/', createGoal);
 app.use("/", require("./routes/auth/signup"));
 app.use("/", require("./routes/auth/login"));
 app.use("/", require("./routes/users/overview"));
-app.use("/", require("./routes/users/user-Profile"));
+app.use("/", require("./routes/users/user-profile"));
 
 
 

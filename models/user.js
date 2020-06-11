@@ -5,7 +5,7 @@ const userSchema = new Schema(
 
 {
     firstName:{type: String},
-    lastname:{type:String},
+    lastName:{type:String},
     dateOfBirth:{type:Date},
     address:{type:String} ,
     hobbies:{type:String},
