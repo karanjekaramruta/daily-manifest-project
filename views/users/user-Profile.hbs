@@ -17,33 +17,28 @@
 </section>
 
 
-<form action="/update" method="POST">
+<form action="user/user-profile/{{upload._id}}" method="POST">
     <p>First Name:</p>
-    <input type="text" name="firstname" placeholder="First Name" />
+    <input type="text" name="firstName" placeholder="{{upload.firstName}}" />
 
     <p>Last Name:</p>
-    <input type="text" name="lastname" placeholder="Last Name" />
+    <input type="text" name="lastName" placeholder="{{upload.lastName}}" />
 
     <p>Email ID:</p>
-    <input type="email" name="email" placeholder="email" />
+    <input type="email" name="email" placeholder="{{upload.email}}" />
 
     <p>Date of Birth:</p>
-    <input type="date" name="dob" placeholder="Date Of Birth" />
+    <input type="date" name="dateOfbirth" placeholder="{{upload.dateOfBirth}}" />
 
     <p>Address :</p>
-    <input type="text" name="address" placeholder="Address" />
+    <input type="text" name="address" placeholder="{{upload.address}}" />
 
     <p>Occupation :</p>
-        <select name="occupation" id="occupation">
-         <option value="Programmer">Programmer</option>
-         <option value="Finance">Finance</option>
-         <option value="Business">Business</option>
-         <option value="Administration">Administration</option>
-        </select>
+   <input type="text" name="occupation" placeholder="{{upload.occupation}}" />
 
     <p>Hobbies :</p>
-    <input type="text" name="hobbies" placeholder="hobbies" />
-    <button type="submit">Create and Update</button>
+    <input type="text" name="hobbies" placeholder="{{upload.hobbies}}" />
+    <button type="submit"> Update</button>
     <br>  
 </form>
 </body>

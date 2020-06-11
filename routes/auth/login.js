@@ -17,7 +17,7 @@ app.get("/login", (req,res)=> { res.render("auth/login") })
 app.post("/login", (req,res, next)=> {
 
     if (req.body.email === "" || req.body.password === "") {
-        res.render("user/login", {
+        res.render("auth/login", {
           errorMessage: "Please enter both, username and email to log in.",
         });
         return;
