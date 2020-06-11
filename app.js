@@ -41,7 +41,7 @@ hbs.registerPartials(__dirname + '/views/partials');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
-// Sessoion
+// Session
 const session    = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 
