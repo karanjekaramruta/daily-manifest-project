@@ -1,24 +1,25 @@
 <div class="container">
     <h2>Log in</h2>
     <form action="/login" method="POST">
-    <div class="form-group">
-        <label for="email">Email ID</label>
-        <input type="email" name="email" placeholder="Your email address" />
-    </div>
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" name="password" placeholder="Your password" />
-    </div>
-    <button class="btn btn-primary btn-block mt-2" type="submit">Log In</button>
-
-    {{#if errorMessage}}
-        <div>
-            <p>{{errorMessage}}</p>
+        <div class="form-group">
+            <label for="email">Email ID</label>
+            <input type="email" name="email" class="form-control" placeholder="Your email address" />
         </div>
-    {{/if}}
-    <div class="signUpLink">
-        <p>No account yet? <a href="/login">Create one now!</a></p>
-    </div>
-</form>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" class="form-control" placeholder="Your password" />
+        </div>
+
+        {{#if errorMessage}}
+            <div>
+                <p>{{errorMessage}}</p>
+            </div>
+        {{/if}}
+        <button class="btn btn-primary btn-block mt-2" type="submit">Log In</button>
+
+        <div class="signUpLink">
+            <p>No account yet? <a href="/login">Create one now!</a></p>
+        </div>
+    </form>
 </div>
 
