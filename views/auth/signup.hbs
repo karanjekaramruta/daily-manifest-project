@@ -1,12 +1,14 @@
 <h2>Sign up</h2>
 <form action="/signup" method="POST">
-    <p>Username</p>
-    <input type="text" name="username" placeholder="Your username" />
+    <p>First name</p>
+    <input type="text" name="firstName" placeholder="Your first name" />
+    <p>Last name</p>
+    <input type="text" name="lastName" placeholder="Your last name" />
     <p>Email</p>
     <input type="email" name="email" placeholder="Your email address" />
     <p>Password</p>
-    <input type="password" name="password" placeholder="Your password" />
-    <p>Confirm password</p>
-    <input type="password" name="password" placeholder="Retype your password" />
+    <input type="password" name="passwordHash" placeholder="Your password" />
+    {{!-- <p>Confirm password</p>
+    <input type="password" name="password" placeholder="Retype your password" /> --}}
     <button type="submit">Create account</button>
 </form>
