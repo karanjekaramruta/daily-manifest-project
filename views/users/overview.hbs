@@ -1,1 +1,27 @@
-<h2>Welcome {{user.firstName}}!</h2>
+<div class="container-fluid">
+
+<!-- Welcome, date and user profile picture -->
+  <div class="d-flex flex-row">
+    <div class="d-flex flex-column">
+    <div class="p-2">
+      <h4>Welcome {{user.firstName}}!</h4>
+      <p>Current date</p>
+    </div>
+    <div class="p-2 d-flex justify-content-end">
+      {{profilePicture}}
+      <a href="/user-Profile">Edit your profile</a>
+    </div>
+    </div>
+  </div>
+
+<!-- Current goal and upcoming tasks -->
+  <div class="d-flex flex-row">
+    <div class="p-2"></div>
+      <h5>Current goal: </h5>
+      <p>Goal's name</p> <!-- retrieve current goal from db based on start and end date -->
+    </div>
+  </div>
+
+  <div class="d-flex flex-row"></div>
+
+</div>
