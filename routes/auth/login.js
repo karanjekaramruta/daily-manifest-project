@@ -3,6 +3,8 @@ const app = express();
 const User = require('../../models/user');
 const bcrypt = require('bcrypt');
 
+app.get("/login", (req,res)=> { res.render("auth/login") })
+
 app.post("/login", (req,res, next)=> {
     User.findOne({
         email: req.body.email
@@ -25,7 +27,5 @@ app.post("/login", (req,res, next)=> {
     }})
     .catch((err)=> { console.log("Err", err) })
 })
-
-app.get("/login", (req,res)=> { res.render("auth/login") })
 
 module.exports = app;
