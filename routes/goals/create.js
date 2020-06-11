@@ -18,7 +18,8 @@ app.post("/goals/create", (req,res)=>{
     Goal
       .create(goal)
       .then((savedGoal)=>{
-        console.log('New goal saved successfully', savedGoal._id)
+        console.log('New goal saved successfully', savedGoal._id);
+        res.redirect("users/overview");
       })
       .catch(err=>{
         console.log('error while saving a goal', err);
