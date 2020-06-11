@@ -5,12 +5,10 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
-      {{#if user}}
+      {{#if currentUser}}
         <a class="nav-item nav-link" href="/user/overview">Overview</a>
         <a class="nav-item nav-link" href="/user/user-Profile">Profile</a>
-        <form id="logout-form" action="/logout" method="POST">
-          <button>Logout</button>
-        </form>
+        <a class="nav-item nav-link" href="/logout">Log out</a>
       {{else}}
         <a class="nav-item nav-link" href="/signup">Sign up</a>
         <a class="nav-item nav-link" href="/login">Log in</a>
