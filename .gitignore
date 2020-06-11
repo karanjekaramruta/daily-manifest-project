@@ -7,5 +7,3 @@ npm-debug.log
 package-lock.json
 # Environment Variables should NEVER be published
 .env
-=======
-
