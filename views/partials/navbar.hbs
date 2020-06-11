@@ -1,19 +1,34 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/">{{title}}</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav">
-      {{#if currentUser}}
-        <a class="nav-item nav-link" href="/user/overview">Overview</a>
-        <a class="nav-item nav-link" href="/user/user-Profile">Profile</a>
-        <a class="nav-item nav-link" href="/logout">Log out</a>
+    <ul class="navbar-nav mr-auto">
+      {{#if loggedIn}}
+        <li class="nav-item">
+          <a class="nav-link" href="/users/overview">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/goals/myGoals">My goals</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/user-Profile">My profile</a>
+        </li>
+      </ul>
+    {{/if}}
+    <span class="navbar-nav navbarNavAltMarkup">
+      {{#if loggedIn}}
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Log out</a>
+        </li>
       {{else}}
-        <a class="nav-item nav-link" href="/signup">Sign up</a>
-        <a class="nav-item nav-link" href="/login">Log in</a>
-        <a class="nav-item nav-link" href="/logout">Log out</a>
+        <li class="nav-item">
+          <a class="nav-link" href="/signup">Sign up</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Log in</a>
+        </li>
       {{/if}}
-    </div>
+    </span>
   </div>
 </nav>
