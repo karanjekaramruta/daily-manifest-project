@@ -9,15 +9,8 @@ const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
 
-
-mongoose
-  .connect('mongodb://localhost/daily-manifest-project', {useNewUrlParser: true})
-  .then(x => {
-    console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
-  })
-  .catch(err => {
-    console.error('Error connecting to mongo', err)
-  });
+// Set up the database
+require('./configs/db.config');
 
 const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
@@ -41,19 +34,20 @@ app.use(require('node-sass-middleware')({
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-hbs.registerPartials(__dirname + '/views/partials');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 
+
 // default value for title local
-app.locals.title = 'Goal Tracker';
+app.locals.title = 'Express - Generated with IronGenerator';
+
+
 
 const index = require('./routes/index');
+const createGoal = require('./routes/goals/create');
 app.use('/', index);
-
-app.use("/", require("./routes/auth/signup"));
-app.use("/", require("./routes/auth/login"));
+app.use('/', createGoal);
 
 app.listen(process.env.PORT, ()=>{
   console.log("app listening")
