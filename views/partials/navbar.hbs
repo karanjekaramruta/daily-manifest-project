@@ -6,6 +6,7 @@
   <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
     <div class="navbar-nav">
       {{#if user}}
+        <a class="nav-item nav-link" href="/user/overview">Overview</a>
         <form id="logout-form" action="/logout" method="POST">
           <button>Logout</button>
         </form>

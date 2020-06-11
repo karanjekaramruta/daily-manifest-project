@@ -38,8 +38,6 @@ hbs.registerPartials(__dirname + '/views/partials');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
-
-
 // default value for title local
 app.locals.title = 'Goal Tracker';
 
@@ -51,6 +49,7 @@ app.use('/', index);
 app.use('/', createGoal);
 app.use("/", require("./routes/auth/signup"));
 app.use("/", require("./routes/auth/login"));
+app.use("/", require("./routes/users/overview"));
 
 app.listen(process.env.PORT, ()=>{
   console.log("app listening")
