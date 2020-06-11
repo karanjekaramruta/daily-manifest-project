@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User-Profile</title>
+</head>
+<body>
+
+<section>
+  <h2>Upload your photo</h2>
+  <form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="text" name="name">
+    <input type="file" name="photo">
+    <input type="submit" value="Save">
+  </form>
+</section>
+
+
+<form action="/update" method="POST">
+    <p>First Name:</p>
+    <input type="text" name="firstname" placeholder="First Name" />
+
+    <p>Last Name:</p>
+    <input type="text" name="lastname" placeholder="Last Name" />
+
+    <p>Email ID:</p>
+    <input type="email" name="email" placeholder="email" />
+
+    <p>Date of Birth:</p>
+    <input type="date" name="dob" placeholder="Date Of Birth" />
+
+    <p>Address :</p>
+    <input type="text" name="address" placeholder="Address" />
+
+    <p>Occupation :</p>
+        <select name="occupation" id="occupation">
+         <option value="Programmer">Programmer</option>
+         <option value="Finance">Finance</option>
+         <option value="Business">Business</option>
+         <option value="Administration">Administration</option>
+        </select>
+
+    <p>Hobbies :</p>
+    <input type="text" name="hobbies" placeholder="hobbies" />
+    <button type="submit">Create and Update</button>
+    <br>  
+</form>
+</body>
+</html>
