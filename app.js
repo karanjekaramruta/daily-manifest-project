@@ -49,6 +49,7 @@ app.use('/', index);
 app.use('/', createGoal);
 app.use("/", require("./routes/auth/signup"));
 app.use("/", require("./routes/auth/login"));
+app.use("/", require("./routes/users/overview"));
 
 app.listen(process.env.PORT, ()=>{
   console.log("app listening")
