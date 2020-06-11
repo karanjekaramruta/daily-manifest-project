@@ -5,7 +5,7 @@ const userSchema = new Schema(
 
 {
     firstName:{type: String},
-    lstname:{type:String}
+    lastname:{type:String}
     ,
     profilePicture: {
       type: String,

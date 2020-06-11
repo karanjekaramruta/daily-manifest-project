@@ -16,12 +16,12 @@ app.post("/login", (req,res, next)=> {
             bcrypt.compare(req.body.password, user.password, function(err, match) {
                 if(err){
                     console.log("Error", err);
+                    debugger
                 } else if(match) {
                     req.session.user = user;
-                    res.redirect("/user/overview");
-                    
+                    res.redirect("./user/overview");
                 } else {
-                    res.redirect("/auth/login?error=incorrect+credentials");
+                    res.redirect("/login?error=incorrect+credentials");
                 }
             });
     }})
