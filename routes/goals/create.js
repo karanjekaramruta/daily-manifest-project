@@ -10,7 +10,19 @@ app.get("/goals/create", (req, res) => {
 
 app.post("/goals/create", (req,res)=>{
   debugger
-    console.log(req.body);
+  
+  const {title, description, startDate,endDate,type,category} = req.body;
+
+    let goal = new Goal({title, description, startDate,endDate,type,category});
+
+    Goal
+      .create(goal)
+      .then((savedGoal)=>{
+        console.log('New goal saved successfully', savedGoal._id)
+      })
+      .catch(err=>{
+        console.log('error while saving a goal', err);
+      })
 })
 
 module.exports = app;
