@@ -12,6 +12,7 @@ app.get("/goals/myGoals", (req, res) => {
       .populate('goals')
       .then((user)=>{
           console.log(user.goals);
+          user.goals.endDate
           res.render('goals/myGoals', {goals:user.goals});
       })
       .catch((err)=>{
