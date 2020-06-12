@@ -24,7 +24,7 @@ app.post("/users/user-profile", (req,res)=>{
   let user = new User({firstName, lastName,  email, dateOfBirth, address, occupation, hobbies});
 
   User
-    .create(req.session.currentUser._id)
+    .findByIdAndUpdate(req.session.currentUser._id)
     .then((userData)=>{
       res.redirect ('/users/user-profile');
     })
