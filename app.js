@@ -8,8 +8,9 @@ const hbs          = require('hbs');
 const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
-
+const multer       = require('multer');
 // Set up the database
+
 require('./configs/db.config');
 
 const app_name = require('./package.json').name;

@@ -41,6 +41,7 @@ app.post("/signup", (req, res, next) => {
                             lastName: req.body.lastName,
                             email: req.body.email,
                             password: hash,
+
                         })
                         .then((user) => {
                             res.redirect("/login");
