@@ -1,42 +1,79 @@
 <div class="container-fluid">
-
-  <!-- Welcome, date and user profile picture -->
-  <div class="row">
-    <div class="col-sm">
-      <h4>Welcome {{user.firstName}}!</h4>
-      <span class="weekday-label"></span>, <span class="day-label"></span> <span class="month-label"></span>
-    </div>
-    <div class="col-sm">
-      <img src="{{user.profilePicture}}" alt="Your profile picture">
-      <a href="/users/user-Profile">Edit your profile</a>
-    </div>
-  </div>
-
-<!-- Today's tasks overview block-->
+	<div class="row">
+		<div class="col-md-12">
 <div class="row">
-  <div class="col-sm">
-    <h5>Today's tasks:</h5>
-  </div>
-</div> 
+				<div class="col-md-6">
+					<h2>
+						Welcome {{user.firstName}}!
+					</h2>
+					<p>
+						Today is <span class="weekday-label"></span>, <span class="day-label"></span> <span class="month-label"></span>
+					</p>
+					<div class="btn-toolbar" role="toolbar">
+						<button class="btn btn-secondary" type="button">
+							Create a new task
+						</button> 
+						<button class="btn btn-secondary" type="button">
+							Track a new goal
+						</button>
+					</div>
+				</div>
+				<div class="col-md-6">
+            <img alt="Your profile picture" src="{{user.profilePicture}}" /> 
+            <br>
+            <a href="/users/user-Profile">
+              <button type="button" class="btn btn-success">
+                Edit profile
+              </button>
+            </a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<h2>
+						Today's tasks
+					</h2>
+					<p>
+            <i>
+              for each, show task with goal's name and priority
+            </i>
+					</p>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<h2>
+						This month's goals
+					</h2>
+					<p>
+            <i>
+              for each, show goal's name, progress bar, due date
+            </i>
+					</p>
+				</div>
+				<div class="col-md-6">
+					<h2>
+						This quarter's goals
+					</h2>
+					<p>
+            <i>
+              for each, show goal's name, progress bar, due date 
+            </i>
+					</p>
+				</div>
+			</div>
+      <div class="row">
 
-  <div class="row">
-    <!-- Monthly overview block-->
-    <div class="col-sm">
-      <h5>This month's goals:</h5>
-      {{#if goal.startDate }} <!-- If current date > start and < end dates --> 
-        {{#each goal}}
-          {{goal.name}}
-          {{goal.tasks}}
-        {{/each}}
-      {{/if}}
-    </div>
-    <!-- Quartely overview block-->
-    <div class="col-sm">
-      <h5>This quarter's goals:</h5>
-    </div>
-  </div>
-
+      </div>
+		</div>
+	</div>
 </div>
+
+
+
+
+
+
 
 <!-- Header's date script -->
 <script>
