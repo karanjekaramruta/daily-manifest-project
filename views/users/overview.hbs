@@ -1,3 +1,5 @@
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 <div class="container-fluid p-3">
 	<div class="row">
 		<div class="col-md-12">
@@ -135,19 +137,18 @@
 
 <!-- Time based greetings -->
 <script>
-    let myDate = new Date();
-    let hrs = myDate.getHours();
+let myDate = new Date();
+let hrs = myDate.getHours();
+let greet;
 
-    let greet;
+if (hrs < 12) {
+  greet = 'Good Morning'
+  } else if (hrs >= 12 && hrs <= 17) {
+    greet = 'Good Afternoon'
+  } else if (hrs >= 17 && hrs <= 24) {
+    greet = 'Good Evening'};
 
-    if (hrs < 12)
-        greet = 'Good Morning';
-    else if (hrs >= 12 && hrs <= 17)
-        greet = 'Good Afternoon';
-    else if (hrs >= 17 && hrs <= 24)
-        greet = 'Good Evening';
-
-    document.getElementById('lblGreetings').innerHTML = greet;
+document.getElementById('lblGreetings').innerHTML = greet;
 </script> 
 
 <!-- Header's date script -->
