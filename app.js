@@ -17,6 +17,9 @@ const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.
 
 const app = express();
 
+// default value for title local
+app.locals.title = 'Goal Tracker';
+
 // Middleware Setup
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -25,12 +28,12 @@ app.use(cookieParser());
 
 // Express View engine setup
 
+
 app.use(require('node-sass-middleware')({
   src:  path.join(__dirname, 'public'),
   dest: path.join(__dirname, 'public'),
   sourceMap: true
 }));
-     
 
 app.set('views', path.join(__dirname, 'views'));
 app.set("view engine", "hbs");
@@ -38,15 +41,32 @@ hbs.registerPartials(__dirname + '/views/partials');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
-// default value for title local
-app.locals.title = 'Goal Tracker';
+// Sessoion
+const session    = require("express-session");
+const MongoStore = require("connect-mongo")(session);
 
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: true,
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection,
+      ttl: 24 * 60 * 60 // 1 day
+    })
+  })
+);
 
+app.use((req,res,next) => {
+  if(req.session.currentUser) {
+      res.locals.loggedIn = true;
+      res.locals.user = req.session.currentUser;    
+   }
+   next();
+})
 
-const index = require('./routes/index');
-const createGoal = require('./routes/goals/create');
-app.use('/', index);
-app.use('/', createGoal);
+// Registering routes
+app.use('/', require('./routes/index'));
 app.use("/", require("./routes/auth/signup"));
 app.use("/", require("./routes/auth/login"));
 app.use("/", require("./routes/users/overview"));
