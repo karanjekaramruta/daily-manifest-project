@@ -6,7 +6,6 @@ const goalSchema = new Schema({
     type:String,
     required:[true, 'goal name is mandatory']
   },
-  description: String,
   type:{
     type:String,
     required:[true, 'goal type is mandatory']
