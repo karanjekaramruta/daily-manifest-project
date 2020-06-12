@@ -42,7 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
 // Session
-const session    = require("express-session");
+const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 
 app.use(
@@ -69,12 +69,21 @@ app.use((req,res,next) => {
 const index = require('./routes/index');
 const createGoal = require('./routes/goals/create');
 app.use('/', index);
-app.use('/', createGoal);
 app.use("/", require("./routes/auth/signup"));
 app.use("/", require("./routes/auth/login"));
-app.use("/", require("./routes/users/overview"));
-app.use("/", require('./routes/auth/logout'));
-app.use("/", require("./routes/users/user-Profile"));
+
+function protectPath(req,res,next){
+  if(req.session.currentUser) {
+    next();
+  }
+  else{
+    res.redirect("/auth/login");
+  }
+}
+app.use('/', createGoal);
+app.use("/", protectPath, require("./routes/users/overview"));
+app.use("/", protectPath, require('./routes/auth/logout'));
+app.use("/", protectPath, require("./routes/users/user-Profile"));
 
 
 

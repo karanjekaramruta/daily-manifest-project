@@ -2,14 +2,13 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
-
-{
-    firstName:{type: String},
-    lastname:{type:String},
-    dateOfBirth:{type:Date},
-    address:{type:String} ,
-    hobbies:{type:String},
-    occupation :{type:String},
+  {
+    firstName: { type: String },
+    lastname: { type: String },
+    dateOfBirth: { type: Date },
+    address: { type: String },
+    hobbies: { type: String },
+    occupation: { type: String },
     profilePicture: {
       type: String,
       default: "images/default.png",
@@ -27,6 +26,7 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Password is required."],
     },
+    goals:[{type:mongoose.Schema.Types.ObjectId, ref:"Goal"}]
   },
   {
     timestamps: true,
@@ -36,4 +36,3 @@ const userSchema = new Schema(
 const User = mongoose.model("User", userSchema);
 
 module.exports = User;
-
