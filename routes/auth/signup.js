@@ -4,7 +4,12 @@ const User = require("../../models/user");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
 
-app.get("/signup", (req, res) => res.render("auth/signup"));
+app.get("/signup", (req, res) => {
+    let data = {
+        layout: false
+    }
+    res.render("auth/signup", data)
+});
 
 app.post("/signup", (req, res, next) => {
 
