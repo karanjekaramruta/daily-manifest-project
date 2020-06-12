@@ -3,7 +3,12 @@ const app = express();
 const User = require('../../models/user');
 const bcrypt = require('bcrypt');
 
-app.get("/login", (req,res)=> { res.render("auth/login") })
+app.get("/login", (req,res)=> {
+    let data = {
+        layout: false
+    }
+    res.render("auth/login", data)
+});
 
 app.post("/login", (req,res, next)=> {
 
