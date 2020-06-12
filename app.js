@@ -38,6 +38,8 @@ app.use(require('node-sass-middleware')({
 app.set('views', path.join(__dirname, 'views'));
 app.set("view engine", "hbs");
 hbs.registerPartials(__dirname + '/views/partials');
+hbs.registerPartials(__dirname + '/views/goals/partials');
+hbs.registerPartials(__dirname + '/views/tasks/partials');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
@@ -83,6 +85,7 @@ function protectPath(req,res,next){
 app.use('/', createGoal);
 app.use("/", protectPath, require("./routes/users/overview"));
 app.use("/", protectPath, require("./routes/goals/myGoals"));
+app.use("/", protectPath, require("./routes/tasks/create"));
 app.use("/", protectPath, require("./routes/users/user-Profile"));
 app.use("/", protectPath, require('./routes/auth/logout'));
 
