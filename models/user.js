@@ -13,7 +13,7 @@ const userSchema = new Schema(
     occupation: { type: String, default:"" },
     profilePicture: {
       type: String,
-      default: "images/default.png",
+      default: "/images/default.png",
     },
     email: {
       type: String,
