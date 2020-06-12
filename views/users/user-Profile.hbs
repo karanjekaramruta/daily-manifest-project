@@ -8,6 +8,7 @@
 </head>
 <body>
 
+<div class = "modal-body">
 <section>
   <h2>Upload your photo</h2>
   <form action="/upload" method="post" enctype="multipart/form-data">
@@ -17,30 +18,39 @@
   </form>
 </section>
 
-
-<form action="user/user-profile/{{upload._id}}" method="POST">
+<form action="/users/user-profile" method="POST">
+<div class = "form-group">
     <p>First Name:</p>
-    <input type="text" name="firstName" placeholder="{{upload.firstName}}" />
-
+    <input type="text" name="firstName" value="{{upload.firstName}}" />
+</div>
+<div class = "form-group">
     <p>Last Name:</p>
-    <input type="text" name="lastName" placeholder="{{upload.lastName}}" />
-
+    <input type="text" name="lastName" value="{{upload.lastName}}" />
+</div>
+<div class = "form-group">
     <p>Email ID:</p>
-    <input type="email" name="email" placeholder="{{upload.email}}" />
-
+    <input type="email" name="email" value="{{upload.email}}" />
+</div>
+<div class = "form-group">
     <p>Date of Birth:</p>
-    <input type="date" name="dateOfbirth" placeholder="{{upload.dateOfBirth}}" />
-
+    <input type="date" name="dateOfbirth" value="{{upload.dateOfBirth}}" />
+    </div>
+<div class = "form-group">
     <p>Address :</p>
-    <input type="text" name="address" placeholder="{{upload.address}}" />
-
+    <input type="text" name="address" value="{{upload.address}}" />
+    </div>
+<div class = "form-group">
     <p>Occupation :</p>
-   <input type="text" name="occupation" placeholder="{{upload.occupation}}" />
-
-    <p>Hobbies :</p>
-    <input type="text" name="hobbies" placeholder="{{upload.hobbies}}" />
+   <input type="text" name="occupation" value="{{upload.occupation}}" />
+   </div>
+  <div class = "form-group">
+  <p>Hobbies :</p>
+    <input type="text" name="hobbies" value="{{upload.hobbies}}" />
     <button type="submit"> Update</button>
     <br>  
-</form>
+</div>
+
+    </form>
+    </div>
 </body>
 </html>
