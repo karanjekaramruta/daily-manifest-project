@@ -2,24 +2,15 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
-<<<<<<< HEAD
 
 {
-    firstName:{type: String},
-    lastName:{type:String},
-    dateOfBirth:{type:Date},
-    address:{type:String} ,
-    hobbies:{type:String},
-    occupation :{type:String},
-=======
-  {
-    firstName: { type: String },
-    lastname: { type: String },
-    dateOfBirth: { type: Date },
-    address: { type: String },
-    hobbies: { type: String },
-    occupation: { type: String },
->>>>>>> 80126b5772747c732f04fe92b71a3dc1357f1851
+  
+    firstName: { type: String, default:"" },
+    lastname: { type: String, default:"" },
+    dateOfBirth: { type: Date,default:"" },
+    address: { type: String, default:"" },
+    hobbies: { type: String, default:"" },
+    occupation: { type: String, default:"" },
     profilePicture: {
       type: String,
       default: "images/default.png",
