@@ -6,7 +6,7 @@ const userSchema = new Schema(
 {
   
     firstName: { type: String, default:"" },
-    lastname: { type: String, default:"" },
+    lastName: { type: String, default:"" },
     dateOfBirth: { type: Date,default:"" },
     address: { type: String, default:"" },
     hobbies: { type: String, default:"" },
