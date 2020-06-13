@@ -1,22 +1,26 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<link rel = "stylesheet" href= "/../../stylesheets/overview.css">
 
 <div class="container-fluid p-3">
 	<div class="row">
 		<div class="col-md-12">
-			<div class="row align-items-center">
-				<div class="col-md-6 text-center">
-					<div class="card m-3" style="min-height: 12em;">
-						<div class="card-body">
-              <h4 class="card-title"><label id="lblGreetings"></label> {{user.firstName}}!</h4>
-              <img class="mb-3" src="/images/default.png" alt="Profile picture thumbnail" width="150" height="150" style="border-radius: 50%;" />
+			<div class="row">
+				<div class="col-md-6 text-left">
+
+						<div class="ml-3">
+
+              <h4><label id="lblGreetings"></label> {{user.firstName}}!</h4>
               <h6 class="card-subtitle mb-3 text-muted">Today is <span class="weekday-label"></span>, <span class="day-label"></span> <span class="month-label"></span></h6>
               <button type="button" class="btn btn-outline-primary">Add a task</button>
               <button type="button" class="btn btn-outline-primary">Track a new goal</button>
-						</div>
-					</div>
+						
+            </div>
+
 				</div>
 				<div class="col-md-6">
-          <p>Randon motivational quote goes here</p>
+          <div class="card m-3">
+            <p id="quote">Randon motivational quote goes here</p>
+          </div>
 				</div>
 			</div>
 		</div>
