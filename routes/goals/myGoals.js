@@ -1,8 +1,8 @@
 const express = require("express");
 const app = express();
-const Goal = require("../../models/goal");
 const User = require("../../models/user");
 var bodyParser = require("body-parser");
+var dateFormat = require('dateformat');
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get("/goals/myGoals", (req, res) => {
@@ -11,8 +11,15 @@ app.get("/goals/myGoals", (req, res) => {
       .findById(req.session.currentUser._id)
       .populate('goals')
       .then((user)=>{
-          console.log(user.goals);
-          user.goals.endDate
+          var goals = user.goals.map((goal)=>{
+            return {
+              ...goal,
+              dueDate:dateFormat(goal.endDate,"mediumDate")
+            }
+          });
+          console.log('modifiedGoals', goals)
+          
+
           res.render('goals/myGoals', {goals:user.goals});
       })
       .catch((err)=>{
