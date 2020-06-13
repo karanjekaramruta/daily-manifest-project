@@ -1,9 +1,11 @@
 const express = require("express");
 const app = express();
-const User = require('../../models/user');
 const axios = require('axios').default;
+const User = require('../../models/user');
 const Goal = require("../../models/goal");
-var bodyParser = require("body-parser");
+const dateFormat = require('dateformat');
+const bodyParser = require("body-parser");
+
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // axios({
@@ -19,6 +21,36 @@ app.use(bodyParser.urlencoded({ extended: false }));
 //   .then(function (response) {
 //     response.data.text()
 //   });
+
+
+
+
+app.get("/users/overview", (req, res) => {
+  res.render("users/overview")
+
+  User
+    .findById(req.session.currentUser._id)
+    .populate('goals')
+    .then((user)=>{
+        const goals = user.goals.map((goal) => {
+          return {
+            ...goal,
+            dueDate:dateFormat(goal.endDate,"mediumDate")
+          }
+        });
+        res.render('users/overview', {goals:user.goals});
+    })
+    .catch((err)=>{
+      console.log('error while fetching goals for the user', err);
+    })
+
+});
+
+
+
+
+
+
 
 app.post("/goals/create", (req,res)=>{
   
@@ -48,6 +80,5 @@ app.post("/goals/create", (req,res)=>{
       })
 })
 
-app.get('/users/overview', (req, res) => res.render('users/overview'));
 
 module.exports = app;
