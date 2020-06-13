@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Caveat+Brush');
+
 #quote {
-  font-family: 'Times New Roman', Times, serif;
+  font-family: 'Caveat Brush', Times, serif;
   font-style: italic;
+  text-transform: uppercase;
 }

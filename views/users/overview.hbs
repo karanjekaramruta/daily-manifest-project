@@ -1,25 +1,24 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <link rel = "stylesheet" href= "/../../stylesheets/overview.css">
+{{> create}}
 
 <div class="container-fluid p-3">
 	<div class="row">
 		<div class="col-md-12">
 			<div class="row">
 				<div class="col-md-6 text-left">
-
 						<div class="ml-3">
-
               <h4><label id="lblGreetings"></label> {{user.firstName}}!</h4>
               <h6 class="card-subtitle mb-3 text-muted">Today is <span class="weekday-label"></span>, <span class="day-label"></span> <span class="month-label"></span></h6>
               <button type="button" class="btn btn-outline-primary">Add a task</button>
-              <button type="button" class="btn btn-outline-primary">Track a new goal</button>
-						
+              <a href="#" data-toggle="modal" data-target="#addGoalModal"><button type="button" class="btn btn-outline-primary">Track a new goal</button></a>
             </div>
-
 				</div>
 				<div class="col-md-6">
           <div class="card m-3">
-            <p id="quote">Randon motivational quote goes here</p>
+            <div class="card-body">
+              <p id="quote">Randon motivational quote goes here</p>
+            </div>
           </div>
 				</div>
 			</div>
@@ -44,7 +43,6 @@
                   <li class="list-group-item">
                     <input type="checkbox" id="task" name="task" value="task">
                     <label for="task">Task name</label>
-                    <br>
                     <span class="badge badge-secondary">Goal's name</span>
                     <span class="badge badge-success">Category</span>
                     <span class="badge badge-info">Priority</span>
@@ -52,7 +50,6 @@
                   <li class="list-group-item">
                     <input type="checkbox" id="task" name="task" value="task">
                     <label for="task">Task name</label>
-                    <br>
                     <span class="badge badge-secondary">Goal's name</span>
                     <span class="badge badge-success">Category</span>
                     <span class="badge badge-info">Priority</span>
@@ -60,7 +57,6 @@
                   <li class="list-group-item">
                     <input type="checkbox" id="task" name="task" value="task">
                     <label for="task">Task name</label>
-                    <br>
                     <span class="badge badge-secondary">Goal's name</span>
                     <span class="badge badge-success">Category</span>
                     <span class="badge badge-info">Priority</span>
@@ -68,7 +64,6 @@
                   <li class="list-group-item">
                     <input type="checkbox" id="task" name="task" value="task">
                     <label for="task">Task name</label>
-                    <br>
                     <span class="badge badge-secondary">Goal's name</span>
                     <span class="badge badge-success">Category</span>
                     <span class="badge badge-info">Priority</span>
