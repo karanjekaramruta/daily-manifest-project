@@ -11,16 +11,20 @@ app.get("/goals/myGoals", (req, res) => {
       .findById(req.session.currentUser._id)
       .populate('goals')
       .then((user)=>{
+          debugger
           var goals = user.goals.map((goal)=>{
             return {
-              ...goal,
+              id:goal._id,
+              title:goal.title,
+              tasks:goal.tasks,
+              performedTasks:goal.performedTasks,
+              category:goal.category,
               dueDate:dateFormat(goal.endDate,"mediumDate")
             }
           });
-          console.log('modifiedGoals', goals)
           
 
-          res.render('goals/myGoals', {goals:user.goals});
+          res.render('goals/myGoals', {goals:goals});
       })
       .catch((err)=>{
         console.log('error while fetching goals for the user', err);

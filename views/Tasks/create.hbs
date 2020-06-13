@@ -1,0 +1,23 @@
+<!-- Modal -->
+<div class="container">
+
+  <div class="tasks">
+    {{#each tasks}}
+      <p>{{this.title}}</p>
+    {{/each}}
+  </div>
+
+
+  <div class="task-form">
+      <form action="/tasks/create?id={{id}}" method="POST">
+        <div class="form-group">
+          <input type="text" class="form-control" name="title" aria-describedby="emailHelp" placeholder="task name..">
+        </div>
+        <button type="submit" class="btn btn-primary">Add</button>
+    </form>
+  </div>
+
+</div>
+
+
+
