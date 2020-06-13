@@ -16,7 +16,7 @@
 					</div>
 				</div>
 				<div class="col-md-6">
-          <p>Random motivational quote goes here</p>
+          <p>Randon motivational quote goes here</p>
 				</div>
 			</div>
 		</div>
@@ -40,6 +40,7 @@
                   <li class="list-group-item">
                     <input type="checkbox" id="task" name="task" value="task">
                     <label for="task">Task name</label>
+                    <br>
                     <span class="badge badge-secondary">Goal's name</span>
                     <span class="badge badge-success">Category</span>
                     <span class="badge badge-info">Priority</span>
@@ -47,6 +48,7 @@
                   <li class="list-group-item">
                     <input type="checkbox" id="task" name="task" value="task">
                     <label for="task">Task name</label>
+                    <br>
                     <span class="badge badge-secondary">Goal's name</span>
                     <span class="badge badge-success">Category</span>
                     <span class="badge badge-info">Priority</span>
@@ -54,6 +56,7 @@
                   <li class="list-group-item">
                     <input type="checkbox" id="task" name="task" value="task">
                     <label for="task">Task name</label>
+                    <br>
                     <span class="badge badge-secondary">Goal's name</span>
                     <span class="badge badge-success">Category</span>
                     <span class="badge badge-info">Priority</span>
@@ -61,6 +64,7 @@
                   <li class="list-group-item">
                     <input type="checkbox" id="task" name="task" value="task">
                     <label for="task">Task name</label>
+                    <br>
                     <span class="badge badge-secondary">Goal's name</span>
                     <span class="badge badge-success">Category</span>
                     <span class="badge badge-info">Priority</span>
@@ -137,47 +141,30 @@
 
 <!-- Time based greetings -->
 <script>
-let myDate = new Date();
-let hrs = myDate.getHours();
-let greet;
+  let myDate = new Date();
+  let hrs = myDate.getHours();
+  let greet;
 
-if (hrs < 12) {
-  greet = 'Good Morning'
-  } else if (hrs >= 12 && hrs <= 17) {
-    greet = 'Good Afternoon'
-  } else if (hrs >= 17 && hrs <= 24) {
-    greet = 'Good Evening'};
+  if (hrs < 12) {
+    greet = 'Good Morning'
+    } else if (hrs >= 12 && hrs <= 17) {
+      greet = 'Good Afternoon'
+    } else if (hrs >= 17 && hrs <= 24) {
+      greet = 'Good Evening'};
 
-document.getElementById('lblGreetings').innerHTML = greet;
+  document.getElementById('lblGreetings').innerHTML = greet;
 </script> 
 
 <!-- Header's date script -->
 <script>
-let date = new Date();
-let day = date.getDate();
-let year = date.getFullYear();
-let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-let dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-let monthLabel = document.getElementsByClassName('month-label')[0].innerHTML = monthNames[date.getMonth()];
-let dayLabel = document.getElementsByClassName("day-label")[0].innerHTML = day;
-let weekdayLabel = document.getElementsByClassName("weekday-label")[0].innerHTML = dayNames[date.getDay(0)];
+  let date = new Date();
+  let day = date.getDate();
+  let year = date.getFullYear();
+  let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  let dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  let monthLabel = document.getElementsByClassName('month-label')[0].innerHTML = monthNames[date.getMonth()];
+  let dayLabel = document.getElementsByClassName("day-label")[0].innerHTML = day;
+  let weekdayLabel = document.getElementsByClassName("weekday-label")[0].innerHTML = dayNames[date.getDay(0)];
 </script>
-
-<!-- YYYY-MM-DD date format script -->
-<script>
-let today = new Date();
-let dd = today.getDate();
-let mm = today.getMonth()+1; 
-const yyyy = today.getFullYear();
-if(dd<10) {dd=`0${dd}`} 
-if(mm<10) {mm=`0${mm}`} 
-today = `${yyyy}-${mm}-${dd}`;
-</script>
-
-<!-- Current month function -->
-<script></script>
-
-<!-- Current quarter function -->
-<script></script>
 
 {{!-- 2020-06-11T00:00:00.000+00:00 --}}
