@@ -1,22 +1,25 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<link rel = "stylesheet" href= "/../../stylesheets/overview.css">
+{{> create}}
 
 <div class="container-fluid p-3">
 	<div class="row">
 		<div class="col-md-12">
-			<div class="row align-items-center">
-				<div class="col-md-6 text-center">
-					<div class="card m-3" style="min-height: 12em;">
-						<div class="card-body">
-              <h4 class="card-title"><label id="lblGreetings"></label> {{user.firstName}}!</h4>
-              <img class="mb-3" src="/images/default.png" alt="Profile picture thumbnail" width="150" height="150" style="border-radius: 50%;" />
+			<div class="row">
+				<div class="col-md-6 text-left">
+						<div class="ml-3">
+              <h4><label id="lblGreetings"></label> {{user.firstName}}!</h4>
               <h6 class="card-subtitle mb-3 text-muted">Today is <span class="weekday-label"></span>, <span class="day-label"></span> <span class="month-label"></span></h6>
               <button type="button" class="btn btn-outline-primary">Add a task</button>
-              <button type="button" class="btn btn-outline-primary">Track a new goal</button>
-						</div>
-					</div>
+              <a href="#" data-toggle="modal" data-target="#addGoalModal"><button type="button" class="btn btn-outline-primary">Track a new goal</button></a>
+            </div>
 				</div>
 				<div class="col-md-6">
-          <p>Random motivational quote goes here</p>
+          <div class="card m-3">
+            <div class="card-body">
+              <p id="quote">Randon motivational quote goes here</p>
+            </div>
+          </div>
 				</div>
 			</div>
 		</div>
@@ -137,47 +140,30 @@
 
 <!-- Time based greetings -->
 <script>
-let myDate = new Date();
-let hrs = myDate.getHours();
-let greet;
+  let myDate = new Date();
+  let hrs = myDate.getHours();
+  let greet;
 
-if (hrs < 12) {
-  greet = 'Good Morning'
-  } else if (hrs >= 12 && hrs <= 17) {
-    greet = 'Good Afternoon'
-  } else if (hrs >= 17 && hrs <= 24) {
-    greet = 'Good Evening'};
+  if (hrs < 12) {
+    greet = 'Good Morning'
+    } else if (hrs >= 12 && hrs <= 17) {
+      greet = 'Good Afternoon'
+    } else if (hrs >= 17 && hrs <= 24) {
+      greet = 'Good Evening'};
 
-document.getElementById('lblGreetings').innerHTML = greet;
+  document.getElementById('lblGreetings').innerHTML = greet;
 </script> 
 
 <!-- Header's date script -->
 <script>
-let date = new Date();
-let day = date.getDate();
-let year = date.getFullYear();
-let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-let dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-let monthLabel = document.getElementsByClassName('month-label')[0].innerHTML = monthNames[date.getMonth()];
-let dayLabel = document.getElementsByClassName("day-label")[0].innerHTML = day;
-let weekdayLabel = document.getElementsByClassName("weekday-label")[0].innerHTML = dayNames[date.getDay(0)];
+  let date = new Date();
+  let day = date.getDate();
+  let year = date.getFullYear();
+  let monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  let dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  let monthLabel = document.getElementsByClassName('month-label')[0].innerHTML = monthNames[date.getMonth()];
+  let dayLabel = document.getElementsByClassName("day-label")[0].innerHTML = day;
+  let weekdayLabel = document.getElementsByClassName("weekday-label")[0].innerHTML = dayNames[date.getDay(0)];
 </script>
-
-<!-- YYYY-MM-DD date format script -->
-<script>
-let today = new Date();
-let dd = today.getDate();
-let mm = today.getMonth()+1; 
-const yyyy = today.getFullYear();
-if(dd<10) {dd=`0${dd}`} 
-if(mm<10) {mm=`0${mm}`} 
-today = `${yyyy}-${mm}-${dd}`;
-</script>
-
-<!-- Current month function -->
-<script></script>
-
-<!-- Current quarter function -->
-<script></script>
 
 {{!-- 2020-06-11T00:00:00.000+00:00 --}}
