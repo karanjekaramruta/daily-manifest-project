@@ -11,6 +11,7 @@ app.get("/tasks/create", (req, res) => {
   Goal
     .findById(goalId)
     .then((goal)=>{
+     
       res.render('tasks/create', {id:req.query.id, tasks:goal.tasks});
     })
     .catch(err=>{

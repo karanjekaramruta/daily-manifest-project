@@ -5,13 +5,13 @@
       <hr>
       <p><span>{{this.category}}</span></p>
       <div class="progress">
-        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" \
-          aria-valuemax="100">25%</div>
+        <div class="progress-bar" role="progressbar" style="width:{{this.percentCompletion}}%;" aria-valuenow="{{this.percentCompletion}}" aria-valuemin="0" \
+          aria-valuemax="100">{{this.percentCompletion}}%</div>
       </div>
     </div>
     <div class="card-footer">
       <small class="text-muted">Due: {{this.dueDate}}</small>
-      <small><a href="/tasks/create?id={{this.id}}">Tasks</a></small>
+      <small><a href="/tasks/create?id={{this.id}}">Manage Tasks</a></small>
         {{!-- <small><a href="/tasks/create?id={{this.id}}" data-toggle="modal" data-target="#addTaskModal" data-goal-id={{this.id}}>Tasks</a></small> --}}
     </div>
   </div>      

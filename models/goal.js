@@ -26,6 +26,10 @@ const goalSchema = new Schema({
     title:{
       type:String,
       required:[true, 'title of task is mandatory']
+    },
+    done:{
+      type:Boolean,
+      default:false
     }
   }],
   performedTasks:[{
