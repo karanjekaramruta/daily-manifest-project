@@ -8,10 +8,15 @@
 			<div class="row">
 				<div class="col-md-6 text-left">
 						<div class="ml-3">
-              <h4><label id="lblGreetings"></label> {{user.firstName}}!</h4>
-              <h6 class="card-subtitle mb-3 text-muted">Today is <span class="weekday-label"></span>, <span class="day-label"></span> <span class="month-label"></span></h6>
-              <button type="button" class="btn btn-outline-primary">Add a task</button>
-              <a href="#" data-toggle="modal" data-target="#addGoalModal"><button type="button" class="btn btn-outline-primary">Track a new goal</button></a>
+              <span class="float-left">
+                <h4><label id="lblGreetings"></label> {{user.firstName}}!</h4>
+                <h6 class="card-subtitle mb-3 text-muted">Today is <span class="weekday-label"></span>, <span class="day-label"></span> <span class="month-label"></span></h6>
+                <button type="button" class="btn btn-outline-primary">Add a task</button>
+                <a href="#" data-toggle="modal" data-target="#addGoalModal"><button type="button" class="btn btn-outline-primary">Track a new goal</button></a>
+              </span>
+              <span class="mr-3 float-right">
+                <img src="/images/default.png" alt="Profile picture thumbnail" width="125" height="125" style="border-radius: 50%;" />
+              </span>
             </div>
 				</div>
 				<div class="col-md-6">
@@ -24,56 +29,6 @@
 			</div>
 		</div>
 	</div>
-	<div class="row">
-				<div class="col-md-12">
-					<div class="card m-3">
-            <h5 class="card-header">
-              Today's tasks
-            </h5>
-            <ul class="list-group list-group-flush">
-              {{!-- {{#if task.dueDate}} --}}
-                {{!-- {{#each task}} --}}
-                  <li class="list-group-item">
-                    <input type="checkbox" id="task" name="task" value="task">
-                    <label for="task">Task name</label>
-                    <span class="badge badge-secondary">Goal's name</span>
-                    <span class="badge badge-success">Category</span>
-                    <span class="badge badge-info">Priority</span>
-                  </li>
-                  <li class="list-group-item">
-                    <input type="checkbox" id="task" name="task" value="task">
-                    <label for="task">Task name</label>
-                    <span class="badge badge-secondary">Goal's name</span>
-                    <span class="badge badge-success">Category</span>
-                    <span class="badge badge-info">Priority</span>
-                  </li>
-                  <li class="list-group-item">
-                    <input type="checkbox" id="task" name="task" value="task">
-                    <label for="task">Task name</label>
-                    <span class="badge badge-secondary">Goal's name</span>
-                    <span class="badge badge-success">Category</span>
-                    <span class="badge badge-info">Priority</span>
-                  </li>
-                  <li class="list-group-item">
-                    <input type="checkbox" id="task" name="task" value="task">
-                    <label for="task">Task name</label>
-                    <span class="badge badge-secondary">Goal's name</span>
-                    <span class="badge badge-success">Category</span>
-                    <span class="badge badge-info">Priority</span>
-                  </li>
-                  <li class="list-group-item">
-                    <input type="checkbox" id="task" name="task" value="task">
-                    <label for="task">Task name</label>
-                    <span class="badge badge-secondary">Goal's name</span>
-                    <span class="badge badge-success">Category</span>
-                    <span class="badge badge-info">Priority</span>
-                  </li>
-                {{!-- {{/each}} --}}
-              {{!-- {{/if}} --}}
-            </ul>
-          </div>
-				</div>
-			</div>
 			<div class="row">
 				<div class="col-md-6">
           <div class="card m-3">
@@ -165,5 +120,3 @@
   let dayLabel = document.getElementsByClassName("day-label")[0].innerHTML = day;
   let weekdayLabel = document.getElementsByClassName("weekday-label")[0].innerHTML = dayNames[date.getDay(0)];
 </script>
-
-{{!-- 2020-06-11T00:00:00.000+00:00 --}}
