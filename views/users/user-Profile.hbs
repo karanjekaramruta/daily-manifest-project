@@ -1,18 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>User-Profile</title>
     <link rel = "stylesheet" href= "/../../stylesheets/user-Profile.css">
 
-</head>
 <body>
-
 <div class = " container-fluid " id = "home">
     <div class = "row justify-content-center">
         <div class = "col-12 col-sm-6 col-md-3">
                 <div class = " form-container ">
+
+                    <img src="{{upload.profilePicture}}" alt=" no pic"  />
                     <section>
                          <h2>Upload your photo</h2>
                          <form action="/upload" method="post" enctype="multipart/form-data">
@@ -21,7 +17,6 @@
                            <input type="submit" class="form-control" value="Save">
                             </form>
                             </section>
-
                             <form action="/users/user-profile" method="POST">
                             <div class = "form-group">
                               <label for ="firstName">First Name:</label>
@@ -50,7 +45,7 @@
                              <div class = "form-group">
                               <label for ="hobbies">Hobbies:</label>
                                <input type="text" name="hobbies" class="form-control" value="{{upload.hobbies}}" />
-                                 <button type="submit" class = "btn btn-primary btn-block"> Update</button>
+                                 <button type="submit" class = "btn btn-outline-dark btn-block"> Update</button>
                                 <br>  
                             </div>
 
@@ -59,12 +54,4 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
 </body>
-</html>
