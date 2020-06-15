@@ -34,6 +34,15 @@ app.post("/users/user-profile", (req,res)=>{
 })
 
 
+app.get('/dummy', (req, res, next) => {
+  
+  res.render('dummy');
 
+
+
+
+
+  
+});
 
 module.exports = app;
