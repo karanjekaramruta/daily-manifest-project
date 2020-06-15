@@ -38,7 +38,10 @@ app.get('/users/overview', (req, res) => {
       console.log('performed Tasks', performedTasks.length);
 
       const percentageCompletion = (performedTasks.length/goal.tasks.length)*100
-      console.log('%completion', percentageCompletion);
+      // if (performedTasks.length == 0) {
+      //   return 0
+      // }
+      console.log(percentageCompletion);
 
       return {
         id:goal._id,
@@ -52,6 +55,12 @@ app.get('/users/overview', (req, res) => {
         isUpcoming:isUpcoming
       }
     });
+
+    axios
+      .get("https://type.fit/api/quotes")
+      .then((response) => {
+        console.log("Quotes", response.data)
+    })
 
         res.render('users/overview', {goals});
     })
