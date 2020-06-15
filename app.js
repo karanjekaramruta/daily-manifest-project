@@ -90,6 +90,7 @@ app.use("/", protectPath, require('./routes/goals/update'));
 app.use("/", protectPath, require("./routes/tasks/create"));
 app.use("/", protectPath, require("./routes/users/user-Profile"));
 app.use("/", protectPath, require('./routes/auth/logout'));
+app.use("/", protectPath, require('./routes/goals/detail'));
 
 
 app.listen(process.env.PORT, ()=>{

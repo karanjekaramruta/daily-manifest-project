@@ -1,0 +1,76 @@
+.card-header-box{
+  display:inline-flex;
+}
+
+.card-header-box h5{
+  margin-right:16px;
+}
+
+.card-header-box a{
+  float:right;
+  padding-right:2%;
+}
+
+.category{
+  background-color: lavender;
+  color: black;
+  padding: 1% 4.1%;
+  margin: 0.8% 0;
+  font-size: 0.9rem;
+  /* border-radius: 13%; */
+}
+
+.progress{
+  display: flex;
+  height: 1rem;
+  overflow: hidden;
+  line-height: 0;
+  font-size: .75rem;
+  background-color: #e9ecef;
+  border-radius: .25rem;
+  margin: 7% 0 2% 0;
+}
+
+.card-footer{
+  padding: .75rem 1.25rem;
+  background-color: rgba(200, 208, 245, 0.03);
+  border-top: 1px solid rgba(0,0,0,.125);
+  
+}
+
+.task-container .form-group input{
+  position:relative;
+  top: 1em;
+  height: 3em;
+}
+
+.fa-plus{
+  position: absolute;
+  bottom: 2.1em;
+  right: 1.2em;
+}
+
+.list-group-item{
+  position: relative;
+    display: block;
+    padding: .75rem 1.25rem;
+    background-color: #fff;
+    border:none;
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+.fa-calendar-check{
+  color:blue;
+  padding-right: 2.0%;
+}
+
+.checked{
+  text-decoration: line-through;
+}
+
+.fa-check{
+  position: absolute;
+  left: 1.2em;
+  bottom: 1.7em;
+  display: none;
+}

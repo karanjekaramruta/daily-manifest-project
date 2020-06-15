@@ -13,7 +13,7 @@ app.get("/goals/myGoals", (req, res) => {
       .then((user)=>{
 
           debugger;
-          var goals = user.goals.map((goal)=>{
+          var goals = user.goals.map((goal,index)=>{
 
             console.log("tasks", goal.tasks);
             console.log("total Tasks are ", goal.tasks.length);
@@ -26,7 +26,10 @@ app.get("/goals/myGoals", (req, res) => {
             const percentageCompletion = (performedTasks.length/goal.tasks.length)*100
             console.log('%completion', percentageCompletion);
 
+            var index=index++;
+
             return {
+              index:index,
               id:goal._id,
               title:goal.title,
               tasks:goal.tasks,

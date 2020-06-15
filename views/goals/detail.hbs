@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+        {{> card goal}}
+    </div>
+    <div class="col-md-4">
+      <div class="task-container shadow p-3 mb-5 bg-white rounded">
+          {{> tasks goal.tasks}}
+          <form action="/tasks/create?id={{goal._id}}" method="POST">
+            <div class="form-group">
+              <input id="newTaskInput" type="text" class="form-control" name="title" aria-describedby="emailHelp" placeholder="task name..">            
+              <a href="/tasks/create?id={{goal._id}}" id="addTask" data-goalId="{{goal._id}}"><i class="fa fa-plus fa-2x"></i></a>             
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  var tasks = document.querySelectorAll('input');
+
+  tasks.forEach((task)=>{
+    task.addEventListener('click', ()=>{
+      let taskId = task.value;
+      const queryParams = new URLSearchParams(window.location.search);
+      const goalId = queryParams.get("id")
+      let url = `http://localhost:3000/goals/update?id=${goalId}&taskId=${taskId}`;
+      console.log(url);
+      axios.post(url)
+        .then(response=>{
+            console.log(response);
+            task.nextElementSibling.classList.add('checked');
+            task.checked=true;
+            task.disabled=true;
+        })
+        .catch(error=>{
+          console.log('error while updating task', error);
+        })
+    });
+  });
+
+  //add new task
+  var addTaskBtn = document.getElementById('addTask');
+  addTaskBtn.addEventListener('click', ()=>{
+    debugger
+    const goalId = addTaskBtn.getAttribute('data-goalId');
+    const taskTitle = document.getElementById('newTaskInput').value;
+    const url = `http://localhost:3000/tasks/create?id=${goalId}&title=${taskTitle}`;
+    
+    const ulElement = document.querySelector('.list-item');
+    let liHtml = `<li class="list-group-item">
+                  <input type="checkbox" name="task" value="${taskId}">
+          
+                  <label for="task">${taskTitle}</label>
+                </li>`
+    axios.post(url)
+      .then((response)=>{
+        debugger
+        console.log('response', response);
+      })
+      .catch(err=>{
+        debugger
+        console.log(err);
+      })
+  });
+</script>
+
