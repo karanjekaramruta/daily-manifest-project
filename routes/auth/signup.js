@@ -6,7 +6,7 @@ const saltRounds = 10;
 
 app.get("/signup", (req, res) => {
     let data = {
-        layout: false
+        layout: 'layout-no-nav'
     }
     res.render("auth/signup", data)
 });

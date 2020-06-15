@@ -1,8 +1,9 @@
-@import url('https://fonts.googleapis.com/css?family=Alegreya+Sans:900');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;1,400;1,700&display=swap');
 
 html, body {
   height:100%;
   width:100%;
+  font-family: 'Montserrat';
 }
 #home {
   background: url("../images/index-bg.png") no-repeat 50% 50%;
@@ -21,9 +22,8 @@ padding-top: 5%;
 }
 
 h1{
-  font-family: 'Alegreya Sans', sans-serif;
-  font-size:700%;
-  line-height:.8;
+  font-size: 3em;
+  line-height: 1.1;
 }
 h3 {
     font-size:200%;
