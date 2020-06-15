@@ -1,7 +1,6 @@
-@import url('https://fonts.googleapis.com/css?family=Caveat+Brush');
+@import url("https://fonts.googleapis.com/css?family=Satisfy");
 
 #quote {
-  font-family: 'Caveat Brush', Times, serif;
+  font-family: "Satisfy", Times, serif;
   font-style: italic;
-  text-transform: uppercase;
 }
