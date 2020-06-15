@@ -84,8 +84,8 @@
               {{!-- {{#if goal.startDate}} --}}
                 {{#each goals}}
                   <li class="list-group-item">
-                      <span class="float-left">{{goal.title}}</span>
-                      <span class="float-right">{{goal.endDate}}</span>
+                      <span class="float-left">{{this.title}}</span>
+                      <span class="float-right">{{this.endDate}}</span>
                       <br>
                       <div class="progress">
                         <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
