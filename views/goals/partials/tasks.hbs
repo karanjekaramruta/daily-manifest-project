@@ -1,0 +1,16 @@
+
+<ul class="list-group">
+  {{#each this}}
+      {{#if this.done}}
+      <li class="list-group-item">
+        <input type="checkbox" name="task" value="{{this._id}}">
+        <label for="task" class="checked" disabled="true">{{this.title}}</label>
+      </li>
+      {{else}}
+      <li class="list-group-item">
+        <input type="checkbox" name="task" value="{{this._id}}">
+        <label for="task">{{this.title}}</label>
+      </li>
+      {{/if}}
+  {{/each}}
+</ul>
