@@ -5,12 +5,32 @@ const Goal = require("../../models/goal");
 var bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.post("/tasks/create", (req, res) => {
-  
-  res.redirect('/goals/myGoals');
+app.get("/tasks/create", (req, res) => {
 
-    //get all goals of the current user
+  const goalId = req.query.id;
+  Goal
+    .findById(goalId)
+    .then((goal)=>{
+     
+      res.render('tasks/create', {id:req.query.id, tasks:goal.tasks});
+    })
+    .catch(err=>{
+      console.log(err);
+    })
+
 });
+
+app.post("/tasks/create", (req,res)=>{
+
+  Goal
+    .findByIdAndUpdate(req.query.id, {$push : {tasks:{title:req.body.title}} }, {new:true})
+    .then((updatedGoal)=>{
+      console.log(updatedGoal);
+      res.redirect(`/tasks/create?id=${req.query.id}`);
+    })
+    .catch(err=>console.log(err))
+    
+})
 
 
 module.exports = app;

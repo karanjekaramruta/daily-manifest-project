@@ -11,16 +11,34 @@ app.get("/goals/myGoals", (req, res) => {
       .findById(req.session.currentUser._id)
       .populate('goals')
       .then((user)=>{
+
+          debugger;
           var goals = user.goals.map((goal)=>{
+
+            console.log("tasks", goal.tasks);
+            console.log("total Tasks are ", goal.tasks.length);
+
+            var performedTasks = goal.tasks.filter((task)=>{
+              return task.done === true;
+            });
+            console.log('performed Tasks', performedTasks.length);
+
+            const percentageCompletion = (performedTasks.length/goal.tasks.length)*100
+            console.log('%completion', percentageCompletion);
+
             return {
-              ...goal,
+              id:goal._id,
+              title:goal.title,
+              tasks:goal.tasks,
+              performedTasks:goal.performedTasks,
+              category:goal.category,
+              percentCompletion:percentageCompletion,
               dueDate:dateFormat(goal.endDate,"mediumDate")
             }
           });
-          console.log('modifiedGoals', goals)
           
 
-          res.render('goals/myGoals', {goals:user.goals});
+          res.render('goals/myGoals', {goals:goals});
       })
       .catch((err)=>{
         console.log('error while fetching goals for the user', err);
