@@ -22,18 +22,14 @@ const goalSchema = new Schema({
     type:Date,
     required:[true, 'end date for goal is mandatory']
   },
-  priority:{
-    type:String,
-    required:[true, 'priority of goal is mandatory']
-  },
-  level:{
-    type:String,
-    required:[true, 'level of goal is mandatory']
-  },
   tasks:[{
     title:{
       type:String,
       required:[true, 'title of task is mandatory']
+    },
+    done:{
+      type:Boolean,
+      default:false
     }
   }],
   performedTasks:[{

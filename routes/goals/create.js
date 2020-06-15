@@ -11,11 +11,10 @@ app.get("/goals/create", (req, res) => {
 
 app.post("/goals/create", (req,res)=>{
   
-  const {title, description, startDate,endDate,type,level,category,priority} = req.body;
+  const {title, startDate,endDate,type,category} = req.body;
 
-    let goal = new Goal({title, description, startDate,endDate,type,level,category,priority});
+    let goal = new Goal({title, startDate,endDate,type,category});
 
-    debugger
     const userId = req.session.currentUser._id;
 
     Goal

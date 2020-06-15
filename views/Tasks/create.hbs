@@ -1,0 +1,63 @@
+<!-- Modal -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-10">
+      <h5 class="card-header">Tasks</h5>
+      <ul class="list-group list-group-flush">
+        {{#each tasks}}
+            {{#if this.done}}
+            <li class="list-group-item">
+              <input type="checkbox" name="task" value="{{this._id}}">
+              <label for="task" class="checked" disabled="true">{{this.title}}</label>
+            </li>
+            {{else}}
+            <li class="list-group-item">
+              <input type="checkbox" name="task" value="{{this._id}}">
+              <label for="task">{{this.title}}</label>
+            </li>
+            {{/if}}
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <form action="/tasks/create?id={{id}}" method="POST">
+        <div class="form-group">
+          <input type="text" class="form-control" name="title" aria-describedby="emailHelp" placeholder="task name..">
+        </div>
+    </div>
+    <div class="col-md-2">
+      <button type="submit" class="btn btn-primary"><i class="far fa-plus-square"></i></button>
+    </div>
+    </form>
+  </div>
+</div>
+
+<style>
+  .checked{
+    text-decoration: line-through;
+  }
+</style>
+
+<script>
+  var tasks = document.querySelectorAll('input');
+  tasks.forEach((task)=>{
+    task.addEventListener('click', ()=>{
+      let taskId = task.value;
+      const queryParams = new URLSearchParams(window.location.search);
+      const goalId = queryParams.get("id")
+      let url = `http://localhost:3000/goals/update?id=${goalId}&taskId=${taskId}`;
+      console.log(url);
+      axios.post(url)
+        .then(response=>{
+            console.log(response);
+            task.nextElementSibling.classList.toggle('checked');
+            task.disabled=true;
+        })
+        .catch(error=>{
+          console.log('error while updating task', error);
+        })
+    });
+  });
+</script>
