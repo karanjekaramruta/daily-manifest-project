@@ -17,7 +17,7 @@
                          <h2>Upload your photo</h2>
                          <form action="/upload" method="post" enctype="multipart/form-data">
   
-                           <input type="file" class="form-control" name="photo">
+                           <input type="file" class="form-control" name="profilePicture">
                            <input type="submit" class="form-control" value="Save">
                             </form>
                             </section>
@@ -36,11 +36,11 @@
                                <input type="email" name="email" class="form-control" value="{{upload.email}}" />
                             </div>  
                             <div class = "form-group">
-                              <label for ="dateOfBirth">dateOfBirth:</label>
-                              <input type="date" name="dateOfBirth" class="form-control" value="{{upload.dateOfBirth}}" />
+                              <label for ="dateOfBirth">Dateofbirth:</label>
+                              <input type="date" name="dateOfBirth" class="form-control" placeholder ="{{upload.dateOfBirth}}" />
                               </div>
                             <div class = "form-group">
-                              <label for ="dateOfBirth">dateOfBirth:</label>
+                              <label for ="dateOfBirth">Address:</label>
                                 <input type="text" name="address" class="form-control" value="{{upload.address}}" />
                              </div>
                             <div class = "form-group">
@@ -56,9 +56,6 @@
 
                          </form>
                         </div>
-
-
-
         </div>
     </div>
 </div>
