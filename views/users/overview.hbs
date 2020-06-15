@@ -11,18 +11,17 @@
               <span class="float-left">
                 <h4><label id="lblGreetings"></label> {{user.firstName}}!</h4>
                 <h6 class="card-subtitle mb-3 text-muted">Today is <span class="weekday-label"></span>, <span class="day-label"></span> <span class="month-label"></span></h6>
-                <button type="button" class="btn btn-outline-primary">Add a task</button>
                 <a href="#" data-toggle="modal" data-target="#addGoalModal"><button type="button" class="btn btn-outline-primary">Track a new goal</button></a>
               </span>
               <span class="mr-3 float-right">
-                <img src="/images/default.png" alt="Profile picture thumbnail" width="125" height="125" style="border-radius: 50%;" />
+                <img src="{{user.profilePicture}}" alt="Profile picture thumbnail" width="125" height="125" style="border-radius: 50%;" />
               </span>
             </div>
 				</div>
 				<div class="col-md-6">
           <div class="card card-shadow m-3">
             <div class="card-body">
-              <p id="quote">Randon motivational quote goes here</p>
+              <p id="quote">Random motivational quote goes here</p>
             </div>
           </div>
 				</div>
@@ -36,51 +35,42 @@
               This month's goals
             </h5>
             <ul class="list-group list-group-flush">
-              {{!-- {{#if goal.startDate}} --}}
-                {{!-- {{#each goal}} --}}
+              {{#each goals}}
+                {{#if this.isCurrentMonth}}
                   <li class="list-group-item">
-                      <span class="float-left">Goal's name</span>
-                      <span class="float-right">Due date</span>
+                      <span class="float-left"><a href="#">{{this.title}}</a></span>
+                      <span class="float-right">Due: {{this.dueDate}}</span>
                       <br>
                       <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+                        <div class="progress-bar" role="progressbar" style="width:{{this.percentCompletion}}%;" aria-valuenow="{{this.percentCompletion}}" aria-valuemin="0" \
+                          aria-valuemax="100">{{this.percentCompletion}}%</div>
                       </div>
                   </li>
-                  <li class="list-group-item">
-                      <span class="float-left">Goal's name</span>
-                      <span class="float-right">Due date</span>
-                      <br>
-                      <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
-                      </div>
-                  </li>
-                  <li class="list-group-item">
-                      <span class="float-left">Goal's name</span>
-                      <span class="float-right">Due date</span>
-                      <br>
-                      <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: 10%;" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100">10%</div>
-                      </div>
-                  </li>
-                {{!-- {{/each}} --}}
-              {{!-- {{/if}} --}}
+                {{/if}}
+              {{/each}}
+
             </ul>
           </div>
 				</div>
 				<div class="col-md-6">
           <div class="card card-shadow m-3">
             <h5 class="card-header">
-              This quarter's goals
+              Upcoming goals
             </h5>
             <ul class="list-group list-group-flush">
+              {{#each goals}}
+                {{#if this.isUpcoming}}
                   <li class="list-group-item">
-                      <span class="float-left">Goal's name</span>
-                      <span class="float-right">Due date</span>
+                      <span class="float-left"><a href="#">{{this.title}}</a></span>
+                      <span class="float-right">Due: {{this.dueDate}}</span>
                       <br>
                       <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width: 5%;" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100">5%</div>
+                        <div class="progress-bar" role="progressbar" style="width:{{this.percentCompletion}}%;" aria-valuenow="{{this.percentCompletion}}" aria-valuemin="0" \
+                          aria-valuemax="100">{{this.percentCompletion}}%</div>
                       </div>
                   </li>
+                {{/if}}
+              {{/each}}
             </ul>
           </div>
 				</div>
