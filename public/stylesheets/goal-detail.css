@@ -1,0 +1,59 @@
+.card-header-box{
+  display:inline-flex;
+}
+
+.card-header-box h5{
+  margin-right:16px;
+}
+
+.card-header-box a{
+  float:right;
+  padding-right:2%;
+}
+
+.category{
+  background-color: navy;
+  color: white;
+  padding: 0.9% 3.9%;
+  margin: 0.8% 0;
+  font-size: 0.9rem;
+}
+
+.progress{
+  display: flex;
+  height: 1rem;
+  overflow: hidden;
+  line-height: 0;
+  font-size: .75rem;
+  background-color: #e9ecef;
+  border-radius: .25rem;
+  margin: 7% 0 2% 0;
+}
+
+.card-footer{
+  padding: .75rem 1.25rem;
+  background-color: rgba(200, 208, 245, 0.03);
+  border-top: 1px solid rgba(0,0,0,.125);
+  
+}
+
+.task-container .form-group input{
+  position:relative;
+  top:1em;
+  height: 3em;
+}
+
+.task-container i{
+  position: absolute;
+  bottom: 2.22em;
+  right: 1.2em;
+}
+
+.list-group-item{
+  position: relative;
+    display: block;
+    padding: .75rem 1.25rem;
+    background-color: #fff;
+    border:none;
+    border-bottom: 1px solid rgba(0,0,0,.125);
+}

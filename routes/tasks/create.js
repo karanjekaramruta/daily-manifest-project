@@ -26,7 +26,7 @@ app.post("/tasks/create", (req,res)=>{
     .findByIdAndUpdate(req.query.id, {$push : {tasks:{title:req.body.title}} }, {new:true})
     .then((updatedGoal)=>{
       console.log(updatedGoal);
-      res.redirect(`/tasks/create?id=${req.query.id}`);
+      //res.redirect(`/tasks/create?id=${req.query.id}`);
     })
     .catch(err=>console.log(err))
     
