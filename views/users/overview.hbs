@@ -7,15 +7,17 @@
 		<div class="col-md-12">
 			<div class="row">
 				<div class="col-md-6 text-left">
-						<div class="ml-3">
-              <span class="float-left">
-                <h4><label id="lblGreetings"></label> {{user.firstName}}!</h4>
-                <h6 class="card-subtitle mb-3 text-muted">Today is <span class="weekday-label"></span>, <span class="day-label"></span> <span class="month-label"></span></h6>
-                <a href="#" data-toggle="modal" data-target="#addGoalModal"><button type="button" class="btn btn-outline-primary">Track a new goal</button></a>
-              </span>
-              <span class="mr-3 float-right">
-                <img src="{{user.profilePicture.path}}" alt="Profile picture thumbnail" width="125" height="125" style="border-radius: 50%;" />
-              </span>
+          <div class="card shadow p-3 mb-5 bg-white rounded" style="min-height: 200px">
+              <div class="m-3">
+                <span class="float-left">
+                  <h4><label id="lblGreetings"></label> {{user.firstName}}!</h4>
+                  <h6 class="card-subtitle mb-3 text-muted">Today is <span class="weekday-label"></span>, <span class="day-label"></span> <span class="month-label"></span></h6>
+                  <a href="#" data-toggle="modal" data-target="#addGoalModal"><button type="button" class="btn btn btn-outline-dark">Track a new goal</button></a>
+                </span>
+                <span class="mr-3 float-right">
+                  <img src="{{user.profilePicture.path}}" alt="Profile picture thumbnail" width="125" height="125" style="border-radius: 50%;" />
+                </span>
+              </div>
             </div>
 				</div>
 				<div class="col-md-6">
