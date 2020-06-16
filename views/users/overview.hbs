@@ -15,7 +15,7 @@
                     <a href="#" data-toggle="modal" data-target="#addGoalModal"><button type="button" class="btn btn-outline-dark">Track a new goal</button></a>
                   </span>
                   <span class="mr-3 float-right">
-                    <img src="/uploads/{{user.profilePicture}}" alt="Profile picture thumbnail" width="125" height="125" style="border-radius: 50%;" />
+                    <img src="{{user.profilePicture.path}}" alt="Profile picture thumbnail" width="125" height="125" style="border-radius: 50%;" />
                   </span>
                 </div>
               </div>
@@ -62,13 +62,14 @@
               {{#each goals}}
                 {{#if this.isUpcoming}}
                   <li class="list-group-item">
-                      <span class="float-left"><a href="/goals/detail?id={{goal._id}}">{{this.title}}</a></span>
+                      <span class="float-left"><a href="/goals/detail?id={{this.id}}">{{this.title}}</a></span>
                       <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width:{{this.percentCompletion}}%;" aria-valuenow="{{this.percentCompletion}}" aria-valuemin="0" \
+                        <div class="progress-bar bg-success" role="progressbar" style="width:{{this.percentCompletion}}%;" aria-valuenow="{{this.percentCompletion}}" aria-valuemin="0" \
                           aria-valuemax="100">{{this.percentCompletion}}%</div>
                       </div>
                       <span class="float-right">Due: {{this.dueDate}}</span>
                   </li>
+
                 {{/if}}
               {{/each}}
             </ul>
