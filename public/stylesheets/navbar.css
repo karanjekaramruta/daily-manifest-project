@@ -22,3 +22,16 @@ nav{
   right: 0px;
   top: 0;
 }
+
+.navbar-toggler{
+  width: 47px;
+  height: 34px;
+  border:none;
+}
+.navbar-toggler .line{
+  width: 100%;
+  float: left;
+  height: 2px;
+  background-color: #fff;
+  margin-bottom: 5px;
+}
