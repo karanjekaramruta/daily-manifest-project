@@ -40,7 +40,7 @@
               {{#each goals}}
                 {{#if this.isCurrentMonth}}
                   <li class="list-group-item">
-                      <span class="float-left"><a href="/goals/detail?id={{this._id}}">{{this.title}}</a></span>
+                      <span class="float-left"><a href="/goals/detail?id={{this.id}}">{{this.title}}</a></span>
                       <div class="progress">
                         <div class="progress-bar" role="progressbar" style="width:{{this.percentCompletion}}%;" aria-valuenow="{{this.percentCompletion}}" aria-valuemin="0" \
                           aria-valuemax="100">{{this.percentCompletion}}%</div>
