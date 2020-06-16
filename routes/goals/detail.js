@@ -20,7 +20,13 @@ app.get("/goals/detail", (req, res) => {
 
         var totalTasks = goal.tasks.length;
 
-        const percentageCompletion = Math.floor((performedTasks.length/totalTasks)*100);
+        
+        let percentageCompletion = 0;
+        if(performedTasks.length !== 0){
+          percentageCompletion = Math.floor((performedTasks.length/totalTasks)*100);
+        }
+
+        console.log('percentageCompletion', percentageCompletion);
 
         debugger
 
