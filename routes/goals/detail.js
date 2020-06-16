@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.get("/goals/detail", (req, res) => {
 
   //get the goal id from req
-  const goalId = '5ee5cb029de00450b4a89a87';
+  const goalId = req.query.id;
 
     Goal
       .findById(goalId)
