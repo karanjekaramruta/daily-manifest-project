@@ -7,43 +7,52 @@
 		<div class="col-md-12">
 			<div class="row">
 				<div class="col-md-6 text-left">
-						<div class="ml-3">
-              <span class="float-left">
-                <h4><label id="lblGreetings"></label> {{user.firstName}}!</h4>
-                <h6 class="card-subtitle mb-3 text-muted">Today is <span class="weekday-label"></span>, <span class="day-label"></span> <span class="month-label"></span></h6>
-                <a href="#" data-toggle="modal" data-target="#addGoalModal"><button type="button" class="btn btn-outline-primary">Track a new goal</button></a>
-              </span>
-              <span class="mr-3 float-right">
-                <img src="{{user.profilePicture.path}}" alt="Profile picture thumbnail" width="125" height="125" style="border-radius: 50%;" />
-              </span>
+          <div class="card shadow p-3 mb-5 bg-white rounded" style="min-height: 175px">
+              <div class="m-3">
+                <span class="float-left">
+                  <h4><label id="lblGreetings"></label> {{user.firstName}}!</h4>
+                  <h6 class="card-subtitle mb-3 text-muted">Today is <span class="weekday-label"></span>, <span class="day-label"></span> <span class="month-label"></span></h6>
+                  <a href="#" data-toggle="modal" data-target="#addGoalModal"><button type="button" class="btn btn btn-outline-dark">Track a new goal</button></a>
+                </span>
+                <span class="mr-3 float-right">
+                  <img src="{{user.profilePicture.path}}" alt="Profile picture thumbnail" width="125" height="125" style="border-radius: 50%;" />
+                </span>
+              </div>
             </div>
 				</div>
 				<div class="col-md-6">
           <div class="container-fluid">
-	<div class="row">
-		<div class="col-md-4">
-      <div class="card shadow p-3 mb-5 bg-white rounded" style="min-height: 200px">
-        
-      </div>
-		</div>
-		<div class="col-md-4">
-      <div class="card shadow p-3 mb-5 bg-white rounded" style="min-height: 200px">
-
-      </div>
-		</div>
-		<div class="col-md-4">
-      <div class="card shadow p-3 mb-5 bg-white rounded" style="min-height: 200px">
-
-      </div>
-		</div>
-	</div>
-</div>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="card text-white bg-danger shadow p-3 mb-5 rounded" style="min-height: 175px">
+                    <div class="card-body">
+                      <h5 class="card-title text-center">3<br>open<br>goals</h5>
+                    </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card text-white bg-warning shadow p-3 mb-5 rounded" style="min-height: 175px">
+                  <div class="card-body">
+                    <h5 class="card-title text-center">6<br>open<br>tasks</h5>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="card text-white bg-success shadow p-3 mb-5 rounded" style="min-height: 175px">
+                  <div class="card-body">
+                    <h5 class="card-title text-center">27<br>closed<br>goals</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 				</div>
 			</div>
 		</div>
 	</div>
 			<div class="row">
 				<div class="col-md-6">
+          {{#if goalExists}}
           <div class="card shadow p-3 mb-5 bg-white rounded">
             <div class="card-body">
               <h5 class="card-title">
@@ -53,18 +62,21 @@
                 {{#each goals}}
                   {{#if this.isCurrentMonth}}
                     <li class="list-group-item goal-info">
-                        <span class="float-left"><h6><a href="/goals/detail?id={{this.id}}">{{this.title}}</a></h6></span>
+                        <span class="float-left"><h6><a class="card-link" href="/goals/detail?id={{this.id}}">{{this.title}}</a></h6></span>
                         <div class="progress">
                           <div class="progress-bar bg-success" role="progressbar" style="width:{{this.percentCompletion}}%;" aria-valuenow="{{this.percentCompletion}}" aria-valuemin="0" \
                             aria-valuemax="100">{{this.percentCompletion}}% completed</div>
                         </div>
-                        <span class="float-right">Due: {{this.dueDate}}</span>
+                        <span class="float-right text-nowrap"><i class="far fa-calendar-check fa-lg"></i> {{this.dueDate}}</span>
                     </li>
                   {{/if}}
                 {{/each}}
               </ul>
             </div>
           </div>
+          {{else}}
+          No goals
+          {{/if}}
 				</div>
 				<div class="col-md-6">
           <div class="card shadow p-3 mb-5 bg-white rounded">
@@ -76,12 +88,12 @@
               {{#each goals}}
                 {{#if this.isUpcoming}}
                   <li class="list-group-item goal-info">
-                      <span class="float-left"><h6><a href="/goals/detail?id={{this.id}}">{{this.title}}</a></h6></span>
+                      <span class="float-left"><h6><a class="card-link" href="/goals/detail?id={{this.id}}">{{this.title}}</a></h6></span>
                       <div class="progress">
                         <div class="progress-bar bg-success" role="progressbar" style="width:{{this.percentCompletion}}%;" aria-valuenow="{{this.percentCompletion}}" aria-valuemin="0" \
                           aria-valuemax="100">{{this.percentCompletion}}% completed</div>
                       </div>
-                      <span class="float-right">Due: {{this.dueDate}}</span>
+                      <span class="float-right text-nowrap"><span class="far fa-calendar-check fa-lg"></span> {{this.dueDate}}</span>
                   </li>
                 {{/if}}
               {{/each}}
