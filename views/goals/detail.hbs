@@ -9,7 +9,7 @@
           <form action="/tasks/create?id={{goal._id}}" method="POST">
             <div class="form-group">
               <input id="newTaskInput" type="text" class="form-control" name="title" aria-describedby="emailHelp" placeholder="task name..">            
-              <a href="/tasks/create?id={{goal._id}}" id="addTask" data-goalId="{{goal._id}}"><i class="fa fa-plus fa-2x"></i></a>             
+              <a href="#" id="addTask" data-goalId="{{goal._id}}"><i class="fa fa-plus fa-2x"></i></a>             
             </div>
         </form>
       </div>
@@ -43,24 +43,23 @@
   //add new task
   var addTaskBtn = document.getElementById('addTask');
   addTaskBtn.addEventListener('click', ()=>{
-    debugger
     const goalId = addTaskBtn.getAttribute('data-goalId');
     const taskTitle = document.getElementById('newTaskInput').value;
     const url = `http://localhost:3000/tasks/create?id=${goalId}&title=${taskTitle}`;
     
-    const ulElement = document.querySelector('.list-item');
-    let liHtml = `<li class="list-group-item">
-                  <input type="checkbox" name="task" value="${taskId}">
-          
-                  <label for="task">${taskTitle}</label>
-                </li>`
+    var ulElement = document.querySelector('.list-group');
+
     axios.post(url)
       .then((response)=>{
-        debugger
-        console.log('response', response);
+        let liElement = document.createElement('li');
+        liElement.classList.add('list-group-item');
+        let liInnerText = `<input type="checkbox" name="task" value="${response.data.taskId}">
+                            <label for="task">${taskTitle}</label>`
+        liElement.innerHTML = liInnerText;
+        ulElement.appendChild(liElement);
+        document.getElementById('newTaskInput').value = "";
       })
       .catch(err=>{
-        debugger
         console.log(err);
       })
   });
