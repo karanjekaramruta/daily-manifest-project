@@ -75,6 +75,7 @@
     axios.post(url)
       .then((response)=>{
         debugger
+        location.replace("http://localhost:3000/users/overview");
       })
       .catch(err=>{
         console.log(err);

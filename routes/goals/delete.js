@@ -14,7 +14,7 @@ app.post("/goals/delete", (req,res)=>{
     Goal
       .findByIdAndDelete(goalId)
       .then((goal)=>{ 
-          res.redirect("/users/overview");
+          res.send('success');
       })
       .catch(err=>{
         console.log('error while saving a goal', err);
