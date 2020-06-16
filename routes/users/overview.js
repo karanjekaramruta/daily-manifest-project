@@ -21,7 +21,7 @@ app.get('/users/overview', (req, res, next) => {
         let goalEndMonth = dateFormat(goal.endDate,"m");
 
         let isCurrentMonth = false;
-        if(goalStartMonth === currentMonth || goalEndMonth === currentMonth) {
+        if(goalStartMonth === currentMonth) {
           isCurrentMonth = true;
         }
 

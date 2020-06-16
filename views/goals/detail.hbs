@@ -65,3 +65,20 @@
   });
 </script>
 
+<script>
+  debugger
+  var deleteButton = document.getElementById('deleteBtn');
+  var goalId = deleteButton.getAttribute('data-goalId');
+  const url = `http://localhost:3000/goals/delete?id=${goalId}`;
+
+  deleteButton.addEventListener('click', ()=>{
+    axios.post(url)
+      .then((response)=>{
+        debugger
+      })
+      .catch(err=>{
+        console.log(err);
+      })
+  });
+</script>
+

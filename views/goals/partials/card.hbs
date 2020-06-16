@@ -2,8 +2,8 @@
   <div class="card-body">
     <div class="card-header-box">
       <h5>{{this.title}}</h5>
-      <a href="/goals/update?id={{this._id}}"><i class="far fa-edit"></i></a>
-      <a href="/goals/delete?id={{this._id}}"><i class="far fa-trash-alt"></i></a>
+      <a id="updateBtn" href="#" data-goalId="{{this._id}}"><i class="far fa-edit"></i></a>
+      <a id="deleteBtn" href="#" data-goalId="{{this._id}}"><i class="far fa-trash-alt"></i></a>
     </div>
     <hr>
     <span class="category">{{this.category}}</span>
@@ -17,3 +17,4 @@
     <i class="far  fa-calendar-check fa-lg"></i><em>{{this.dueDate}}</em>
   </div>
 </div>
+
