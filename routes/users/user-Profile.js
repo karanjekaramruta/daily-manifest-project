@@ -3,7 +3,7 @@ const app = express();
 const User = require("../../models/user");
 var bodyParser = require("body-parser");
 const multer  = require('multer');
-const upload = multer({ dest: '../../public/images' });
+const upload = multer({ dest: './public/uploads' });
 
 
 
