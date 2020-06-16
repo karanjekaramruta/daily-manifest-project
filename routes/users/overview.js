@@ -8,7 +8,7 @@ const now = new Date();
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get('/users/overview', (req, res) => {
+app.get('/users/overview', (req, res, next) => {
 
   User
     .findById(req.session.currentUser._id)
@@ -56,12 +56,6 @@ app.get('/users/overview', (req, res) => {
       }
     });
 
-    axios
-      .get("https://type.fit/api/quotes")
-      .then((response) => {
-        console.log("Quotes", response.data)
-    })
-
         res.render('users/overview', {goals});
     })
 
@@ -69,6 +63,15 @@ app.get('/users/overview', (req, res) => {
       console.log('Error while fetching goals', err);
     })
   
+});
+
+app.get('/users/overview', (req, res) => {
+  axios
+    .get("https://type.fit/api/quotes")
+    .then((response) => {
+      console.log("Quotes", response.data)
+  })
+  res.render('users/overview', {quotes: response.data});
 });
 
 module.exports = app;
