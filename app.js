@@ -87,6 +87,8 @@ app.use('/', createGoal);
 app.use("/", protectPath, require("./routes/users/overview"));
 app.use("/", protectPath, require("./routes/goals/myGoals"));
 app.use("/", protectPath, require('./routes/goals/update'));
+app.use("/", protectPath, require('./routes/goals/updateGoal'));
+app.use("/", protectPath, require('./routes/goals/delete'));
 app.use("/", protectPath, require("./routes/tasks/create"));
 app.use("/", protectPath, require("./routes/users/user-Profile"));
 app.use("/", protectPath, require('./routes/auth/logout'));

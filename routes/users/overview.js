@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 const User = require('../../models/user');
-const axios = require('axios').default;
 const Goal = require("../../models/goal");
 const dateFormat = require('dateformat');
 const now = new Date();
@@ -21,7 +20,7 @@ app.get('/users/overview', (req, res, next) => {
         let goalEndMonth = dateFormat(goal.endDate,"m");
 
         let isCurrentMonth = false;
-        if(goalStartMonth === currentMonth || goalEndMonth === currentMonth) {
+        if(goalStartMonth === currentMonth) {
           isCurrentMonth = true;
         }
 
@@ -43,6 +42,11 @@ app.get('/users/overview', (req, res, next) => {
         }
       console.log(percentageCompletion);
 
+      let goalExists = true;
+      if(goal._id !== "") {
+        goalExists = false
+      }
+
       return {
         id:goal._id,
         title:goal.title,
@@ -51,6 +55,7 @@ app.get('/users/overview', (req, res, next) => {
         category:goal.category,
         percentCompletion:percentageCompletion,
         dueDate:dateFormat(goal.endDate,"mediumDate"),
+        goalExists:goalExists,
         isCurrentMonth:isCurrentMonth,
         isUpcoming:isUpcoming
       }
@@ -64,14 +69,5 @@ app.get('/users/overview', (req, res, next) => {
     })
   
 });
-
-// app.get('/users/overview', (req, res) => {
-//   axios
-//     .get("https://type.fit/api/quotes")
-//     .then((response) => {
-//       console.log("Quotes", response.data)
-//   })
-//   res.render('users/overview', {quotes: response.data});
-// });
 
 module.exports = app;
