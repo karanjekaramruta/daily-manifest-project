@@ -42,7 +42,10 @@ app.get('/users/overview', (req, res, next) => {
         }
       console.log(percentageCompletion);
 
-      
+      let goalExists = true;
+      if(goal._id !== "") {
+        goalExists = false
+      }
 
       return {
         id:goal._id,
@@ -52,6 +55,7 @@ app.get('/users/overview', (req, res, next) => {
         category:goal.category,
         percentCompletion:percentageCompletion,
         dueDate:dateFormat(goal.endDate,"mediumDate"),
+        goalExists:goalExists,
         isCurrentMonth:isCurrentMonth,
         isUpcoming:isUpcoming
       }
