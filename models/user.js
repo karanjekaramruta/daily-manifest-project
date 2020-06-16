@@ -2,18 +2,17 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema(
-
-{
-  
-    firstName: { type: String, default:"" },
-    lastName: { type: String, default:"" },
-    dateOfBirth: { type: Date,default:"" },
-    address: { type: String, default:"" },
-    hobbies: { type: String, default:"" },
-    occupation: { type: String, default:"" },
+  {
+    firstName: { type: String, default: "" },
+    lastName: { type: String, default: "" },
+    dateOfBirth: { type: Date, default: "" },
+    address: { type: String, default: "" },
+    hobbies: { type: String, default: "" },
+    occupation: { type: String, default: "" },
     profilePicture: {
-      type: String,
-      default: "/images/default.png",
+      id: String,
+      path:String,
+      originalFileName:String
     },
     email: {
       type: String,
@@ -28,7 +27,7 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Password is required."],
     },
-    goals:[{type:mongoose.Schema.Types.ObjectId, ref:"Goal"}]
+    goals: [{ type: mongoose.Schema.Types.ObjectId, ref: "Goal" }],
   },
   {
     timestamps: true,

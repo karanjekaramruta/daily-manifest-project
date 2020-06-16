@@ -1,49 +1,31 @@
+<div class="container-fluid" id="home">
+    <div class="row justify-content-center">
+        <div class="col-12 col-sm-6 col-md-3">
+            <div class="form-container shadow mb-5 bg-white rounded">
+                <h2>Log In</h2>
+                <form action="/login" method="POST">
+                    <div class="form-group">
+                        <label for="email">Email ID</label>
+                        <input type="email" name="email" class="form-control" placeholder="Your email address" required="true"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" class="form-control" placeholder="Your password" required="true"/>
+                    </div>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel = "stylesheet" href= "/../../stylesheets/login.css">
+                    {{#if errorMessage}}
+                    <div>
+                        <p>{{errorMessage}}</p>
+                    </div>
+                    {{/if}}
+                    <button class="btn btn-outline-dark btn-block mt-2" type="submit">Log In</button>
 
-    <title>{{title}}</title>
-
-  <body>
-    
-    <div class = " container-fluid " id = "home">
-    <div class = "row justify-content-center">
-        <div class = "col-12 col-sm-6 col-md-3">
-    <div class="form-container">
-    <h2>Log in</h2>
-    <form action="/login" method="POST">
-        <div class="form-group">
-            <label for="email">Email ID</label>
-            <input type="email" name="email" class="form-control" placeholder="Your email address" />
-        </div>
-        <div class="form-group">
-            <label for="password">Password</label>
-            <input type="password" name="password" class="form-control" placeholder="Your password" />
-        </div>
-
-        {{#if errorMessage}}
-            <div>
-                <p>{{errorMessage}}</p>
+                    <div class="signUpLink">
+                        <p>No account yet? <a href="/signup">Create one now!</a></p>
+                    </div>
+                </form>
             </div>
-        {{/if}}
-        <button class="btn btn-outline-dark btn-block mt-2" type="submit">Log In</button>
 
-        <div class="signUpLink">
-            <p>No account yet? <a href="/signup">Create one now!</a></p>
         </div>
-    </form>
-</div>
-
- </div>
     </div>
 </div>
-
-
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  </body>
-
-

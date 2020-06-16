@@ -12,11 +12,12 @@
 }
 
 .category{
-  background-color: navy;
-  color: white;
-  padding: 0.9% 3.9%;
+  background-color: lavender;
+  color: black;
+  padding: 1% 4.1%;
   margin: 0.8% 0;
   font-size: 0.9rem;
+  /* border-radius: 13%; */
 }
 
 .progress{
@@ -39,13 +40,13 @@
 
 .task-container .form-group input{
   position:relative;
-  top:1em;
+  top: 1em;
   height: 3em;
 }
 
-.task-container i{
+.fa-plus{
   position: absolute;
-  bottom: 2.22em;
+  bottom: 2.1em;
   right: 1.2em;
 }
 
@@ -56,4 +57,20 @@
     background-color: #fff;
     border:none;
     border-bottom: 1px solid rgba(0,0,0,.125);
+}
+
+.fa-calendar-check{
+  color:blue;
+  padding-right: 2.0%;
+}
+
+.checked{
+  text-decoration: line-through;
+}
+
+.fa-check{
+  position: absolute;
+  left: 1.2em;
+  bottom: 1.7em;
+  display: none;
 }

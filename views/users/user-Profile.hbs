@@ -1,57 +1,42 @@
-
-    <title>User-Profile</title>
-    <link rel = "stylesheet" href= "/../../stylesheets/user-Profile.css">
-
-<body>
-<div class = " container-fluid " id = "home">
-    <div class = "row justify-content-center">
-        <div class = "col-12 col-sm-6 col-md-3">
-                <div class = " form-container ">
-
-                    <img src="{{upload.profilePicture}}" alt=" no pic"  />
-                    <section>
-                         <h2>Upload your photo</h2>
-                         <form action="/upload" method="post" enctype="multipart/form-data">
-  
-                           <input type="file" class="form-control" name="profilePicture">
-                           <input type="submit" class="form-control" value="Save">
-                            </form>
-                            </section>
-                            <form action="/users/user-profile" method="POST">
-                            <div class = "form-group">
-                              <label for ="firstName">First Name:</label>
-                               <input type="text" name="firstName" class="form-control" value="{{upload.firstName}}" />
-                            </div>
-                            <div class = "form-group">
-                              <label for ="lastName">Last Name:</label>
-                              <input type="text" name="lastName" class="form-control" value="{{upload.lastName}}" />     
-                            </div>
-                            <div class = "form-group">
-                              <label for ="email">Email:</label>
-                               <input type="email" name="email" class="form-control" value="{{upload.email}}" />
-                            </div>  
-                            <div class = "form-group">
-                              <label for ="dateOfBirth">Dateofbirth:</label>
-                              <input type="date" name="dateOfBirth" class="form-control" placeholder ="{{upload.dateOfBirth}}" />
-                              </div>
-                            <div class = "form-group">
-                              <label for ="dateOfBirth">Address:</label>
-                                <input type="text" name="address" class="form-control" value="{{upload.address}}" />
-                             </div>
-                            <div class = "form-group">
-                              <label for ="occupation">Occupation:</label>
-                                 <input type="text" name="occupation" class="form-control" value="{{upload.occupation}}" />
-                             </div>
-                             <div class = "form-group">
-                              <label for ="hobbies">Hobbies:</label>
-                               <input type="text" name="hobbies" class="form-control" value="{{upload.hobbies}}" />
-                                 <button type="submit" class = "btn btn-outline-dark btn-block"> Update</button>
-                                <br>  
-                            </div>
-
-                         </form>
-                        </div>
-        </div>
+<div class="container" id="home">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <div class="form-container">
+        <form action="/users/user-profile" method="POST" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="firstName">First Name:</label>
+            <input type="text" name="firstName" class="form-control" value="{{upload.firstName}}" />
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name:</label>
+            <input type="text" name="lastName" class="form-control" value="{{upload.lastName}}" />
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" name="email" class="form-control" value="{{upload.email}}" />
+          </div>
+          <div class="form-group">
+            <label for="dateOfBirth">Dateofbirth:</label>
+            <input type="date" name="dateOfBirth" class="form-control" placeholder="{{upload.dateOfBirth}}" />
+          </div>
+          <div class="form-group">
+            <label for="dateOfBirth">Address:</label>
+            <input type="text" name="address" class="form-control" value="{{upload.address}}" />
+          </div>
+          <div class="form-group">
+            <label for="occupation">Occupation:</label>
+            <input type="text" name="occupation" class="form-control" value="{{upload.occupation}}" />
+          </div>
+          <div class="form-group">
+            <label for="hobbies">Hobbies:</label>
+            <input type="text" name="hobbies" class="form-control" value="{{upload.hobbies}}" />
+          </div>
+          <div class="form-group">
+              <input type="file" class="form-control" name="profilePicture">
+          </div>
+          <button type="submit" class="btn btn-outline-dark btn-block"> Update</button>
+        </form>
+      </div>
     </div>
+  </div>
 </div>
-</body>

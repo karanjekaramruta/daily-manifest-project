@@ -8,9 +8,8 @@
           {{> tasks goal.tasks}}
           <form action="/tasks/create?id={{goal._id}}" method="POST">
             <div class="form-group">
-              <input type="text" class="form-control" name="title" aria-describedby="emailHelp" placeholder="task name..">
-              <a href="#"><i class="fa fa-plus fa-2x"></i></a>
-              
+              <input id="newTaskInput" type="text" class="form-control" name="title" aria-describedby="emailHelp" placeholder="task name..">            
+              <a href="/tasks/create?id={{goal._id}}" id="addTask" data-goalId="{{goal._id}}"><i class="fa fa-plus fa-2x"></i></a>             
             </div>
         </form>
       </div>
@@ -20,6 +19,7 @@
 
 <script>
   var tasks = document.querySelectorAll('input');
+
   tasks.forEach((task)=>{
     task.addEventListener('click', ()=>{
       let taskId = task.value;
@@ -30,7 +30,7 @@
       axios.post(url)
         .then(response=>{
             console.log(response);
-            task.nextElementSibling.classList.toggle('checked');
+            task.nextElementSibling.classList.add('checked');
             task.checked=true;
             task.disabled=true;
         })
@@ -38,6 +38,31 @@
           console.log('error while updating task', error);
         })
     });
+  });
+
+  //add new task
+  var addTaskBtn = document.getElementById('addTask');
+  addTaskBtn.addEventListener('click', ()=>{
+    debugger
+    const goalId = addTaskBtn.getAttribute('data-goalId');
+    const taskTitle = document.getElementById('newTaskInput').value;
+    const url = `http://localhost:3000/tasks/create?id=${goalId}&title=${taskTitle}`;
+    
+    const ulElement = document.querySelector('.list-item');
+    let liHtml = `<li class="list-group-item">
+                  <input type="checkbox" name="task" value="${taskId}">
+          
+                  <label for="task">${taskTitle}</label>
+                </li>`
+    axios.post(url)
+      .then((response)=>{
+        debugger
+        console.log('response', response);
+      })
+      .catch(err=>{
+        debugger
+        console.log(err);
+      })
   });
 </script>
 

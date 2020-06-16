@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 
 app.get("/login", (req,res)=> {
     let data = {
-        layout: false
+        layout: 'layout-no-nav'
     }
     res.render("auth/login", data)
 });
