@@ -8,7 +8,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.get("/goals/detail", (req, res) => {
 
   //get the goal id from req
-  const goalId = '5ee5cb029de00450b4a89a87';
+  const goalId = req.query.id;
 
     Goal
       .findById(goalId)
@@ -20,7 +20,13 @@ app.get("/goals/detail", (req, res) => {
 
         var totalTasks = goal.tasks.length;
 
-        const percentageCompletion = Math.floor((performedTasks.length/totalTasks)*100);
+        
+        let percentageCompletion = 0;
+        if(performedTasks.length !== 0){
+          percentageCompletion = Math.floor((performedTasks.length/totalTasks)*100);
+        }
+
+        console.log('percentageCompletion', percentageCompletion);
 
         debugger
 

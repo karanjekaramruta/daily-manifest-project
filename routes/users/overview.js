@@ -8,7 +8,8 @@ const now = new Date();
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get('/users/overview', (req, res) => {
+app.get('/users/overview', (req, res, next) => {
+  const goalId = req.query.id;
 
   User
     .findById(req.session.currentUser._id)
@@ -20,7 +21,7 @@ app.get('/users/overview', (req, res) => {
         let goalEndMonth = dateFormat(goal.endDate,"m");
 
         let isCurrentMonth = false;
-        if(goalStartMonth === currentMonth && goalEndMonth === currentMonth) {
+        if(goalStartMonth === currentMonth || goalEndMonth === currentMonth) {
           isCurrentMonth = true;
         }
 
@@ -36,11 +37,10 @@ app.get('/users/overview', (req, res) => {
         return task.done === true;
       });
       console.log('performed Tasks', performedTasks.length);
-
-      const percentageCompletion = (performedTasks.length/goal.tasks.length)*100
-      // if (performedTasks.length == 0) {
-      //   return 0
-      // }
+      let percentageCompletion = 0
+      if(performedTasks.length !== 0){
+          percentageCompletion = Math.floor((performedTasks.length/goal.tasks.length)*100);
+        }
       console.log(percentageCompletion);
 
       return {
@@ -56,12 +56,6 @@ app.get('/users/overview', (req, res) => {
       }
     });
 
-    axios
-      .get("https://type.fit/api/quotes")
-      .then((response) => {
-        console.log("Quotes", response.data)
-    })
-
         res.render('users/overview', {goals});
     })
 
@@ -70,5 +64,14 @@ app.get('/users/overview', (req, res) => {
     })
   
 });
+
+// app.get('/users/overview', (req, res) => {
+//   axios
+//     .get("https://type.fit/api/quotes")
+//     .then((response) => {
+//       console.log("Quotes", response.data)
+//   })
+//   res.render('users/overview', {quotes: response.data});
+// });
 
 module.exports = app;
