@@ -1,6 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Satisfy");
+.goal-info {
+  padding: 2% 0;
 
-#quote {
-  font-family: "Satisfy", Times, serif;
-  font-size: 1.5em;
 }

@@ -27,7 +27,7 @@ app.post("/goals/create", (req,res)=>{
               {$push : {goals:savedGoal} }
             )
             .then((user)=>{
-                res.redirect("/goals/myGoals")
+                res.redirect(`\detail?id=${savedGoal._id}`)
             });
             
             console.log('New goal saved successfully', savedGoal._id);

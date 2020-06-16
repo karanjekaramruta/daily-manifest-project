@@ -21,11 +21,25 @@
               </div>
 				</div>
 				<div class="col-md-6">
-          <div class="card shadow p-3 mb-5 bg-white rounded" style="min-height: 200px">
-            <div class="card-body">
-              <p id="quote">Random motivational quote goes here{{quotes}}</p>
-            </div>
-          </div>
+          <div class="container-fluid">
+	<div class="row">
+		<div class="col-md-4">
+      <div class="card shadow p-3 mb-5 bg-white rounded" style="min-height: 200px">
+        
+      </div>
+		</div>
+		<div class="col-md-4">
+      <div class="card shadow p-3 mb-5 bg-white rounded" style="min-height: 200px">
+
+      </div>
+		</div>
+		<div class="col-md-4">
+      <div class="card shadow p-3 mb-5 bg-white rounded" style="min-height: 200px">
+
+      </div>
+		</div>
+	</div>
+</div>
 				</div>
 			</div>
 		</div>
@@ -33,52 +47,51 @@
 			<div class="row">
 				<div class="col-md-6">
           <div class="card shadow p-3 mb-5 bg-white rounded">
-            <h5 class="card-title">
-              This month's goals
-            </h5>
-            <ul class="list-group list-group-flush">
-              {{#each goals}}
-                {{#if this.isCurrentMonth}}
-                  <li class="list-group-item">
-                      <span class="float-left"><a href="/goals/detail?id={{this.id}}">{{this.title}}</a></span>
-                      <div class="progress">
-                        <div class="progress-bar" role="progressbar" style="width:{{this.percentCompletion}}%;" aria-valuenow="{{this.percentCompletion}}" aria-valuemin="0" \
-                          aria-valuemax="100">{{this.percentCompletion}}%</div>
-                      </div>
-                      <span class="float-right">Due: {{this.dueDate}}</span>
-                  </li>
-                {{/if}}
-              {{/each}}
-
-            </ul>
+            <div class="card-body">
+              <h5 class="card-title">
+                This month's goals
+              </h5>
+              <ul class="list-group list-group-flush">
+                {{#each goals}}
+                  {{#if this.isCurrentMonth}}
+                    <li class="list-group-item goal-info">
+                        <span class="float-left"><h6><a href="/goals/detail?id={{this.id}}">{{this.title}}</a></h6></span>
+                        <div class="progress">
+                          <div class="progress-bar bg-success" role="progressbar" style="width:{{this.percentCompletion}}%;" aria-valuenow="{{this.percentCompletion}}" aria-valuemin="0" \
+                            aria-valuemax="100">{{this.percentCompletion}}% completed</div>
+                        </div>
+                        <span class="float-right">Due: {{this.dueDate}}</span>
+                    </li>
+                  {{/if}}
+                {{/each}}
+              </ul>
+            </div>
           </div>
 				</div>
 				<div class="col-md-6">
           <div class="card shadow p-3 mb-5 bg-white rounded">
-            <h5 class="card-title">
-              Upcoming goals
-            </h5>
-            <ul class="list-group list-group-flush">
+            <div class="card-body">
+              <h5 class="card-title">
+                Upcoming goals
+              </h5>
+              <ul class="list-group list-group-flush">
               {{#each goals}}
                 {{#if this.isUpcoming}}
-                  <li class="list-group-item">
-                      <span class="float-left"><a href="/goals/detail?id={{this.id}}">{{this.title}}</a></span>
+                  <li class="list-group-item goal-info">
+                      <span class="float-left"><h6><a href="/goals/detail?id={{this.id}}">{{this.title}}</a></h6></span>
                       <div class="progress">
                         <div class="progress-bar bg-success" role="progressbar" style="width:{{this.percentCompletion}}%;" aria-valuenow="{{this.percentCompletion}}" aria-valuemin="0" \
-                          aria-valuemax="100">{{this.percentCompletion}}%</div>
+                          aria-valuemax="100">{{this.percentCompletion}}% completed</div>
                       </div>
                       <span class="float-right">Due: {{this.dueDate}}</span>
                   </li>
-
                 {{/if}}
               {{/each}}
-            </ul>
+              </ul>
+            </div>
           </div>
 				</div>
 			</div>
-      <div class="row">
-
-      </div>
 		</div>
 	</div>
 </div>
