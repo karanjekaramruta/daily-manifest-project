@@ -3,7 +3,9 @@ const app = express();
 const User = require("../../models/user");
 var bodyParser = require("body-parser");
 const multer  = require('multer');
-const upload = multer({ dest: '../../public/uploads/' });
+const upload = multer({ dest: './public/uploads' });
+
+
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -31,7 +33,7 @@ app.post("/users/user-profile", upload.single('profilePicture'), (req,res)=>{
       lastName:req.body.lastName,
       email:req.body.email,
       dateOfBirth:req.body.dateOfBirth,
-      address:req.body.dateOfBirth,
+      address:req.body.address,
       hobbies:req.body.hobbies,
       occupation:req.body.occupation,
       profilePicture:{
