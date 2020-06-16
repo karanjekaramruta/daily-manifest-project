@@ -12,13 +12,11 @@ html, body {
   width:100%;
   background-size: cover;
 }
-.landing-text{
-padding-top: 5%;  
- display:table-cell;
-   vertical-align:top;
-   text-align:center;
-   font-family:  sans-serif;
-   font-weight: bold;
+.landing-text{padding-top: 5%;display:table-cell;vertical-align:top;text-align:center;font-family:  sans-serif;font-weight: bold;}
+
+.landing-text a{
+  padding: 0.2% 1.2%;
+  margin: 0.5%;
 }
 
 h1{

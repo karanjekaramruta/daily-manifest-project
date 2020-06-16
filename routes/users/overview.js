@@ -47,6 +47,9 @@ app.get('/users/overview', (req, res, next) => {
         goalExists = false
       }
 
+      let openTasks = goal.tasks.length - performedTasks.length; 
+      console.log('openTasks are', openTasks);
+
       return {
         id:goal._id,
         title:goal.title,
@@ -57,11 +60,27 @@ app.get('/users/overview', (req, res, next) => {
         dueDate:dateFormat(goal.endDate,"mediumDate"),
         goalExists:goalExists,
         isCurrentMonth:isCurrentMonth,
-        isUpcoming:isUpcoming
+        isUpcoming:isUpcoming,
+        openTasks:openTasks
       }
     });
 
-        res.render('users/overview', {goals});
+    var closedGoals = goals.filter((goal)=>{
+      return goal.percentCompletion === 100;
+    });
+    
+    var openTaskCounter = 0;
+    goals.forEach((goal)=>{
+        openTaskCounter = openTaskCounter + goal.openTasks;
+    })
+
+    console.log('openTasks', openTaskCounter);
+    console.log('closedGoals', closedGoals);
+    console.log('openGOals', openGoals);
+
+    var openGoals = user.goals.length - closedGoals.length;
+
+        res.render('users/overview', {goals:goals, openGoals:openGoals, closedGoals:closedGoals.length, openTasks:openTaskCounter});
     })
 
     .catch((err)=>{
