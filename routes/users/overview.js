@@ -1,10 +1,9 @@
-const express = require("express");
+const express = require('express');
 const app = express();
 const User = require('../../models/user');
-const Goal = require("../../models/goal");
 const dateFormat = require('dateformat');
 const now = new Date();
-const bodyParser = require("body-parser");
+const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/users/overview', (req, res, next) => {
@@ -13,8 +12,8 @@ app.get('/users/overview', (req, res, next) => {
     .populate('goals')
     .then((user)=>{
         let goals = user.goals.map((goal) => {
-        let currentMonth = dateFormat(now,"m");
-        let goalStartMonth = dateFormat(goal.startDate,"m");
+        let currentMonth = dateFormat(now,'m');
+        let goalStartMonth = dateFormat(goal.startDate,'m');
         let isCurrentMonth = false;
 
         if(goalStartMonth === currentMonth) {
@@ -49,7 +48,7 @@ app.get('/users/overview', (req, res, next) => {
         performedTasks:goal.performedTasks,
         category:goal.category,
         percentCompletion:percentageCompletion,
-        dueDate:dateFormat(goal.endDate,"mediumDate"),
+        dueDate:dateFormat(goal.endDate,'mediumDate'),
         goalExists:goalExists,
         isCurrentMonth:isCurrentMonth,
         isUpcoming:isUpcoming,
