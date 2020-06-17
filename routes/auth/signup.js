@@ -1,24 +1,24 @@
-const express = require("express");
+const express = require('express');
 const app = express();
-const User = require("../../models/user");
-const bcrypt = require("bcrypt");
+const User = require('../../models/user');
+const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
-app.get("/signup", (req, res) => {
+app.get('/signup', (req, res) => {
     let data = {
         layout: 'layout-no-nav'
     }
-    res.render("auth/signup", data)
+    res.render('auth/signup', data)
 });
 
-app.post("/signup", (req, res, next) => {
+app.post('/signup', (req, res, next) => {
 
     let email = req.body.email;
     let password = req.body.password;
 
-    if(email === "" || password === ""){
-        res.render("auth/signup", {
-            errorMessage: "Please enter both, email and password to signup"
+    if(email === '' || password === ''){
+        res.render('auth/signup', {
+            errorMessage: 'All fields are required to signup.'
         });
         return;
     }
@@ -28,7 +28,7 @@ app.post("/signup", (req, res, next) => {
 
             if(user){
                 res.render('auth/signup', {
-                    errorMessage: "Email already exists, please choose another one."
+                    errorMessage: 'Email already exists, please choose another one.'
                 });    
             }
             else{
@@ -44,22 +44,20 @@ app.post("/signup", (req, res, next) => {
 
                         })
                         .then((user) => {
-                            res.redirect("/login");
+                            res.redirect('/login');
                         })
                         .catch((err) => {
-                            console.log("Error", err);
+                            console.log('Error', err);
                         });
                     }
                     else{
-                        console.log("error occurred while creating password hash");
+                        errorMessage: 'An error occured while creating your account. Please try again later.';
                     }
 
                 });
             }
 
         })
-
-
 });
 
 module.exports = app;
