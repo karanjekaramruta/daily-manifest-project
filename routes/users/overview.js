@@ -1,18 +1,19 @@
-const express = require("express");
+const express = require('express');
 const app = express();
-const User = require("../../models/user");
-const dateFormat = require("dateformat");
+const User = require('../../models/user');
+const dateFormat = require('dateformat');
 const now = new Date();
-const bodyParser = require("body-parser");
+const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 
-app.get("/users/overview", (req, res, next) => {
-  User.findById(req.session.currentUser._id)
-    .populate("goals")
-    .then((user) => {
-      let goals = user.goals.map((goal) => {
-        let currentMonth = dateFormat(now, "m");
-        let goalStartMonth = dateFormat(goal.startDate, "m");
+app.get('/users/overview', (req, res, next) => {
+  User
+    .findById(req.session.currentUser._id)
+    .populate('goals')
+    .then((user)=>{
+        let goals = user.goals.map((goal) => {
+        let currentMonth = dateFormat(now,'m');
+        let goalStartMonth = dateFormat(goal.startDate,'m');
         let isCurrentMonth = false;
 
         if (goalStartMonth === currentMonth) {
@@ -42,20 +43,20 @@ app.get("/users/overview", (req, res, next) => {
 
         let openTasks = goal.tasks.length - performedTasks.length;
 
-        return {
-          id: goal._id,
-          title: goal.title,
-          tasks: goal.tasks,
-          performedTasks: goal.performedTasks,
-          category: goal.category,
-          percentCompletion: percentageCompletion,
-          dueDate: dateFormat(goal.endDate, "mediumDate"),
-          goalExists: goalExists,
-          isCurrentMonth: isCurrentMonth,
-          isUpcoming: isUpcoming,
-          openTasks: openTasks,
-        };
-      });
+      return {
+        id:goal._id,
+        title:goal.title,
+        tasks:goal.tasks,
+        performedTasks:goal.performedTasks,
+        category:goal.category,
+        percentCompletion:percentageCompletion,
+        dueDate:dateFormat(goal.endDate,'mediumDate'),
+        goalExists:goalExists,
+        isCurrentMonth:isCurrentMonth,
+        isUpcoming:isUpcoming,
+        openTasks:openTasks
+      }
+    });
 
       let closedGoals = goals.filter((goal) => {
         return goal.percentCompletion === 100;
