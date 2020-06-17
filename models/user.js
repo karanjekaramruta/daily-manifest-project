@@ -29,8 +29,7 @@ const userSchema = new Schema({
   profilePicture: {
     id: String,
     path: String,
-    originalFileName: String,
-    default:'/images/default.png'
+    originalFileName: String
   },
   email: {
     type: String,

@@ -8,7 +8,7 @@
           {{> tasks goal.tasks}}
           <form action="/tasks/create?id={{goal._id}}" method="POST">
             <div class="form-group">
-              <input id="newTaskInput" type="text" class="form-control" name="title" aria-describedby="emailHelp" placeholder="task name..">            
+              <input id="newTaskInput" type="text" class="form-control" name="title" required="true" aria-describedby="emailHelp" placeholder="task name..">            
               <a href="#" id="addTask" data-goalId="{{goal._id}}"><i class="fa fa-plus fa-2x"></i></a>             
             </div>
         </form>
@@ -24,7 +24,7 @@
     task.addEventListener('click', ()=>{
       let taskId = task.value;
       const queryParams = new URLSearchParams(window.location.search);
-      const goalId = queryParams.get("id")
+      const goalId = queryParams.get("id");
       let url = `http://localhost:3000/goals/update?id=${goalId}&taskId=${taskId}`;
       console.log(url);
       axios.post(url)
@@ -45,6 +45,10 @@
   addTaskBtn.addEventListener('click', ()=>{
     const goalId = addTaskBtn.getAttribute('data-goalId');
     const taskTitle = document.getElementById('newTaskInput').value;
+    if(taskTitle===""){
+      alert("Task Title cannot be blank");
+      return false;
+    }
     const url = `http://localhost:3000/tasks/create?id=${goalId}&title=${taskTitle}`;
     
     var ulElement = document.querySelector('.list-group');

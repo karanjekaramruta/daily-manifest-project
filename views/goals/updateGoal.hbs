@@ -5,22 +5,17 @@
         <form action="/goals/updateGoal?id={{goal._id}}" method="POST">
           <h5 class="modal-title" id="updateGoalModalLabel">Update Goal</h5>
           <div class="form-group">
-            <input type="text" class="form-control" name="title" aria-describedby="emailHelp"
+            <input type="text" class="form-control" name="title" required="true" aria-describedby="emailHelp"
               placeholder="What do you want to achive?" value={{goal.title}}>
           </div>
           <div class="form-group">
             <label for="startDate">Start Date</label>
-            <input type="date" class="form-control" name="startDate" value={{startDateModified}}>
+            <input type="date" class="form-control" name="startDate" required="true" value={{startDateModified}}>
           </div>
           <div class="form-group">
             <label for="endDate">End Date</label>
-            <input type="date" class="form-control" name="endDate" value={{endDateModified}}>
+            <input type="date" class="form-control" name="endDate" required="true"value={{endDateModified}}>
           </div>
-          {{!-- <div class="form-group" id="goalType">
-            <label for="type">Goal Type</label><br>
-            <label class="radio-inline"><input type="radio" name="type" value="personal"> Personal</label>
-            <label class="radio-inline"><input type="radio" name="type" value="professional"> Professional</label>
-          </div> --}}
           <div class="form-group">
             <label for="endDate">Goal Category</label>
             <select name="category" class="custom-select">

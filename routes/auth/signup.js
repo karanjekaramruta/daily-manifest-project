@@ -58,6 +58,9 @@ app.post('/signup', (req, res, next) => {
             }
 
         })
+        .catch((err)=>{
+            next(err);
+        })
 });
 
 module.exports = app;
