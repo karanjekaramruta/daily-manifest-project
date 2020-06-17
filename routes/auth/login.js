@@ -1,20 +1,20 @@
-const express = require("express");
+const express = require('express');
 const app = express();
 const User = require('../../models/user');
 const bcrypt = require('bcrypt');
 
-app.get("/login", (req,res)=> {
+app.get('/login', (req,res)=> {
     let data = {
         layout: 'layout-no-nav'
     }
-    res.render("auth/login", data)
+    res.render('auth/login', data)
 });
 
-app.post("/login", (req,res, next)=> {
+app.post('/login', (req,res, next)=> {
 
-    if (req.body.email === "" || req.body.password === "") {
-        res.render("auth/login", {
-          errorMessage: "Please enter both, username and email to log in.",
+    if (req.body.email === '' || req.body.password === '') {
+        res.render('auth/login', {
+          errorMessage: 'Please enter both, username and email to log in.',
         });
         return;
     }
@@ -25,29 +25,26 @@ app.post("/login", (req,res, next)=> {
         .then((user)=> {
             
             if(!user) {
-                res.render("auth/login", {
-                    errorMessage: "The user does not exist"
+                res.render('auth/login', {
+                    errorMessage: 'The user does not exist.'
                 });
 
                 return;
             } 
 
             bcrypt.compare(req.body.password, user.password, function(err, match) {
-                if(err){
-                    console.log("error occurred in password comparison", err);
-
-                } else if(match) {
+                if(match) {
                     req.session.currentUser = user;
-                    res.redirect("/users/overview");
+                    res.redirect('/users/overview');
                 } else {
-                    res.render("auth/login", {
-                        errorMessage : "Incorrect credentials"
+                    res.render('auth/login', {
+                        errorMessage : 'Incorrect credentials.'
                     });
                 }
             });
             
         })
-        .catch((err)=> { console.log("Err", err) })
+        .catch((err)=> { console.log('Err', err) })
 })
 
 module.exports = app;
