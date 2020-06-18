@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node node app.js",
+    "start": "node app.js",
     "dev": "DEBUG=daily-manifest-project:* nodemon ./bin/www",
     "dev-windows": "nodemon ./bin/www"
   },
