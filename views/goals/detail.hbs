@@ -25,7 +25,7 @@
       let taskId = task.value;
       const queryParams = new URLSearchParams(window.location.search);
       const goalId = queryParams.get("id");
-      let url = `http://localhost:3000/goals/update?id=${goalId}&taskId=${taskId}`;
+      let url = `/goals/update?id=${goalId}&taskId=${taskId}`;
       console.log(url);
       axios.post(url)
         .then(response=>{
@@ -49,7 +49,7 @@
       alert("Task Title cannot be blank");
       return false;
     }
-    const url = `http://localhost:3000/tasks/create?id=${goalId}&title=${taskTitle}`;
+    const url = `/tasks/create?id=${goalId}&title=${taskTitle}`;
     
     var ulElement = document.querySelector('.list-group');
 
@@ -73,13 +73,13 @@
   debugger
   var deleteButton = document.getElementById('deleteBtn');
   var goalId = deleteButton.getAttribute('data-goalId');
-  const url = `http://localhost:3000/goals/delete?id=${goalId}`;
+  const url = `/goals/delete?id=${goalId}`;
 
   deleteButton.addEventListener('click', ()=>{
     axios.post(url)
       .then((response)=>{
         debugger
-        location.replace("http://localhost:3000/users/overview");
+        location.replace("/users/overview");
       })
       .catch(err=>{
         console.log(err);
